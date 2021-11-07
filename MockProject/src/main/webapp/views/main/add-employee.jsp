@@ -5,15 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/header.css">
-<link rel="stylesheet" href="../resources/css/style-main.css">
+<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../resources/css/header.css">
+<link rel="stylesheet" href="../../resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
-	<jsp:include page="header-employee-manager.jsp"></jsp:include>
+	<jsp:include page="../header/header-employee-manager.jsp"></jsp:include>
 	<div>
-		<jsp:include page="sidebar-employee-manager.jsp"></jsp:include>
+		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		
 		<form action="#" method="get" class="float-left main-content border-top" id="form-add-employee">
             <h2 class="m-4">Add Employee</h2>
@@ -79,7 +79,7 @@
         </form>
 	</div>
 
-	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 </body>

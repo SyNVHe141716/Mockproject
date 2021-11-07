@@ -6,11 +6,10 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/css/header.css">
-<link rel="stylesheet" href="../resources/css/style-main.css">
-<script src="https://kit.fontawesome.com/9f5e8136b5.js"
-	crossorigin="anonymous"></script>
+	href="../../resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../resources/css/header.css">
+<link rel="stylesheet" href="../../resources/css/style-main.css">
+<script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
 	<div class="float-left sidebar vh-100 border-right bg-light">

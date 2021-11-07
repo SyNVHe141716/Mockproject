@@ -7,9 +7,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Login</title>
-<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../resources/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="../resources/css/Login-screen.css">
+<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../resources/fonts/font-awesome.min.css">
+<link rel="stylesheet" href="../../resources/css/Login-screen.css">
 </head>
 <body>
 	<div id="login-one" class="login-one">
@@ -31,7 +31,7 @@
             </div>
         </form>
 	</div>
-	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../resources/js/login.js"></script>
+	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../resources/js/login.js"></script>
 </body>
 </html>
