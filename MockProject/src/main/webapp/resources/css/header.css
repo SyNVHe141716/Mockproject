@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+.sidebar{
+    width: 20%;
+}
+
+*{
+    user-select: none;
+}
+
+.active{
+    background-color: lightgray;
+}
