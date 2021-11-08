@@ -11,7 +11,7 @@
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
-	<jsp:include page="../header/header-employee-manager.jsp"></jsp:include>
+	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		
