@@ -19,9 +19,9 @@
                     <details>
                         <summary style="list-style: none; color: #007bff;"><i class="fas fa-chart-bar mr-2"></i>Employee
                             manager<i class="fas fa-chevron-down float-right" style="line-height: 24px;"></i></summary>
-                        <a id="EmployeeList" href="EmployeeList" class="d-block ml-1 border-bottom p-3"><i
+                        <a id="EmployeeList" href="employee-list.jsp" class="d-block ml-1 border-bottom p-3"><i
                                 class="fas fa-list-ul mr-2"></i>Employee list</a>
-                        <a id="AddEmployee" href="AddEmployee" class="d-block ml-1 border-bottom p-3"><i
+                        <a id="AddEmployee" href="add-employee.jsp" class="d-block ml-1 border-bottom p-3"><i
                                 class="fas fa-plus mr-2"></i>Add Employee</a>
                     </details>
                 </li>
@@ -31,9 +31,9 @@
 	<script>
 		var list = document.getElementById("EmployeeList");
 		var add = document.getElementById("AddEmployee");
-		if (window.location.pathname.includes("EmployeeList")) {
+		if (window.location.pathname.includes("employee-list.jsp")) {
 			list.classList.add("active");
-		} else if (window.location.pathname.includes("AddEmployee")) {
+		} else if (window.location.pathname.includes("add-employee.jsp")) {
 			add.classList.add("active");
 		}
 	</script>
