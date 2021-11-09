@@ -26,4 +26,14 @@ public class SQLCommand {
 	 * */
 	
 	public final static String GET_ALL_DEPARTMENT= "SELECT [departmentId],[departmentName] FROM [dbo].[department]";
+	
+	
+	
+	/*
+	 * SQL Command Parking Lot
+	 * Author: KiemNV13
+	 * Create Date: 09/11/2021
+	 * */
+	public static final String GET_ALL_PARKING_LOT = "SELECT * FROM packinglot";
+	public static final String ADD_PARKING_LOT = "INSERT INTO packinglot( [packName], [packPlace], [packArea] , [packPrice], [packStatus]) VALUES(?, ?, ?, ?, ?)";
 }
