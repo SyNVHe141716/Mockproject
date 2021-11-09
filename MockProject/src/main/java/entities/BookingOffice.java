@@ -15,7 +15,18 @@ public class BookingOffice implements Serializable{
 	private int officePrice;
 	private Date startContractDeadline;
 	private Date endContractDeadline;
+	private String destination;
+	private int tripid;
 	
+	
+	public int getTripid() {
+		return tripid;
+	}
+
+	public void setTripid(int tripid) {
+		this.tripid = tripid;
+	}
+
 	public BookingOffice() {
 		super();
 	}
@@ -41,6 +52,22 @@ public class BookingOffice implements Serializable{
 		this.officePrice = officePrice;
 		this.startContractDeadline = startContractDeadline;
 		this.endContractDeadline = endContractDeadline;
+	}
+	
+
+	public BookingOffice(int officeId, String officeName, String destination) {
+		super();
+		this.officeId = officeId;
+		this.officeName = officeName;
+		this.destination = destination;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
 	public int getOfficeId() {
@@ -103,8 +130,11 @@ public class BookingOffice implements Serializable{
 	public String toString() {
 		return "BookingOffice [officeId=" + officeId + ", officeName=" + officeName + ", officePhone=" + officePhone
 				+ ", officePlace=" + officePlace + ", officePrice=" + officePrice + ", startContractDeadline="
-				+ startContractDeadline + ", endContractDeadline=" + endContractDeadline + "]";
+				+ startContractDeadline + ", endContractDeadline=" + endContractDeadline + ", destination="
+				+ destination + "]";
 	}
+
+	
 	
 	
 }
