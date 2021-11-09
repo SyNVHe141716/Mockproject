@@ -8,6 +8,8 @@ public class SQLCommand {
 	 *  Create Date: 09/11/2021
 	 */
 	public final static String GET_EMPLOYEE = "SELECT [employeeId], [account], [password] FROM [dbo].[employee] WHERE account = ? AND password = ?";
+	
+	public final  static String GET_ALL_EMPLOYEES = "SELECT * FROM [dbo].[employee]";
 
 	public final static String INSERT_EMPLOYEE_INTO_DB = "INSERT INTO [dbo].[employee] ([account],[departmentId],[employeeAddress],[employeeBirthdate],[employeeEmail],[employeeName],[employeePhone],[password],[sex]\n"
 			+ "     VALUES (?,?,?,?,?,?,?,?,?)";

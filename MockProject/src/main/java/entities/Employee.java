@@ -16,7 +16,8 @@ public class Employee implements Serializable {
 	private String employeeName;
 	private String employeePhone;
 	private String password;
-	private String sex;
+	//field sex be edited by ThienNT11 (09/11/2021)
+	private boolean sex;
 	private Boolean role;
 
 	public Employee() {
@@ -25,7 +26,7 @@ public class Employee implements Serializable {
 
 	public Employee(int employeeId, String account, String departmentId, String employeeAddress,
 			String employeeBirthdate, String employeeEmail, String employeeName, String employeePhone, String password,
-			String sex, Boolean role) {
+			boolean sex, Boolean role) {
 		super();
 		this.employeeId = employeeId;
 		this.account = account;
@@ -41,7 +42,7 @@ public class Employee implements Serializable {
 	}
 
 	public Employee(String account, String departmentId, String employeeAddress, String employeeBirthdate,
-			String employeeEmail, String employeeName, String employeePhone, String password, String sex, Boolean role) {
+			String employeeEmail, String employeeName, String employeePhone, String password, boolean sex, Boolean role) {
 		super();
 		this.account = account;
 		this.departmentId = departmentId;
@@ -126,12 +127,13 @@ public class Employee implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getSex() {
+	
+	//get&set of sex be edited by ThienNT11 (09/11/2021)
+	public boolean isSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(boolean sex) {
 		this.sex = sex;
 	}
 

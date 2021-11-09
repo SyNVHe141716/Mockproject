@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.EmployeeDAO;
 import entities.Employee;
@@ -61,7 +63,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			pre.setString(6, employee.getEmployeeName());
 			pre.setString(7, employee.getEmployeePhone());
 			pre.setString(8, employee.getPassword());
-			pre.setString(9, employee.getSex());
+			pre.setBoolean(9, employee.isSex());
 			status = pre.execute();
 		} finally {
 			if (rs != null) {
@@ -75,6 +77,45 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			}
 		}
 		return status;
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployees() throws SQLException {
+		// TODO Auto-generated method stub
+		List<Employee> employees = new ArrayList<Employee>();
+		Employee employee = null;
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_ALL_EMPLOYEES);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				employee = new Employee();
+				employee.setEmployeeId(rs.getInt("employeeId"));
+				employee.setAccount(rs.getString("account"));
+				employee.setDepartmentId(rs.getString("departmentId"));
+				employee.setEmployeeAddress(rs.getString("employeeAddress"));
+				employee.setEmployeeBirthdate(rs.getString("employeeBirthdate"));
+				employee.setEmployeeEmail(rs.getString("employeeEmail"));
+				employee.setEmployeeName(rs.getString("employeeName"));
+				employee.setEmployeePhone(rs.getString("employeePhone"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getBoolean("role"));
+				employee.setSex(rs.getBoolean("sex"));
+				employees.add(employee);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return employees;
 	}
 	
 	
