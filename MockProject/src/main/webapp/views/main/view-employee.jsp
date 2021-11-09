@@ -16,9 +16,12 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		
-		<form action="#" method="get" class="float-left main-content border-top" id="form-add-employee">
-            <h2 class="m-4">Add Employee</h2>
+		<form action="#" method="get" class="float-left main-content border-top" id="form-update-employee">
+            <h2 class="m-4">View Employee</h2>
             <hr class="m-4">
+            
+            <input type="hidden" name="id" value="" id="id">
+
             <table class="m-4">
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Full name <label class="required">(*)</label></td>
@@ -73,9 +76,10 @@
             <div class="d-flex list-btn">
                 <div  onclick="window.history.back();" class="btn btn-info mr-1 text-btn"><i class="fas fa-backward mr-1"></i>Back</div>
                 <div onclick="clickReset()" class="btn btn-warning mr-1 text-btn"><i class="fas fa-redo mr-1" style="transform: scaleX(-1);"></i>Reset</div>
-                <div onclick="clickAdd()" class="btn btn-success mr-1 text-btn">
-                    <i class="fas fa-plus mr-1"></i>Add
+                <div onclick="clickUpdate()" class="btn btn-success mr-1 text-btn">
+                    <i class="fas fa-plus mr-1"></i>Update
                 </div>
+                <div onclick="clickDetele()" class="btn btn-danger text-btn"><i class="fas fa-trash mr-1"></i>Delete</div>
             </div>
         </form>
 	</div>
