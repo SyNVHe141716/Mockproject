@@ -22,6 +22,35 @@ function clickAdd() {
 	}
 }
 
+function clickUpdate(){
+    if(document.getElementById('fullname').value == ''){
+        alert('Full name cannot be blank');
+    }
+    else if(!checkPhoneNumber){
+        alert('Phone number is invalid');
+    }
+    else if(document.getElementById('dateofbirth').value == ''){
+        alert('Date of birth cannot be blank');
+    }
+    else if(document.getElementById('account').value == ''){
+        alert('Account cannot be blank')
+    }
+    else if(document.getElementById('password').value == ''){
+        alert('Password cannot be blank')
+    }
+    else{
+        document.getElementById('form-update-employee').submit();
+    }
+}
+
+function clickDetele(){
+    var check = confirm('Are you sure want to delete?');
+    var id = document.getElementById('id').value;
+    if(check){
+        window.location.href = '#';
+    }
+}
+
 function checkEmail(){
 	if(document.getElementById('email').value != '' && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value)){
 		return false;

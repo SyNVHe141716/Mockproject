@@ -55,7 +55,7 @@
                         <td>Hai Chau, Da Nang</td>
                         <td>901292</td>
                         <td>employee</td>
-                        <td><a href="#"><i class="far fa-eye"></i>View</a></td>
+                        <td><a href="view-employee.jsp"><i class="far fa-eye"></i>View</a></td>
                     </tr>
                 </tbody>
             </table>
