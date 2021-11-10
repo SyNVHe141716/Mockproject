@@ -19,20 +19,27 @@
 		<div class="float-left main-content border-top">
             <h2 class="m-4">Employee List</h2>
             <hr class="m-4">
-            <form id="form-search" class="float-right d-flex mr-4 mb-4">
-                <i class="fas fa-search p-2 bg-custom border border-icon-search" style="height: 35.2px"></i>
+            <form id="form-search" class="float-right d-flex mr-lg-5 mb-4 justify-content-end">
+                <i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
                 <input id="input-search" name="input-search" type="text" placeholder="User Search"
-                    class="box-search border-custom p-1 mr-2" style="width: 35%; height: 35.2px">
-                <i class="fas fa-filter bg-custom border border-icon-search p-2" style=" width: 20%; height: 35.2px">
+                    class="box-search border-custom p-1 mr-2" style="width: 35%; height: 35px;">
+                    <select class="box-search border-custom p-1 mr-2 pr-5" id="selectdepartment" name="selectdepartment" style="display: none;">
+                        <option>Test 1</option>
+                        <option>Test 1</option>
+                        <option>Test 1</option>
+                    </select>
+                <i class="fas fa-filter bg-custom border border-icon-search p-2">
                     <p class="d-inline font-weight-normal">Filter by</p>
                 </i>
-                <select onchange="changeCategory()" name="category" id="category" class="border-custom pt-1 pb-2 mr-2" style="width: 25%; height: 35.2px; overflow: hidden;">
+                <select onchange="changeCategory()" name="category" id="category" class="border-custom pt-1 pb-2 mr-2"
+                    style="width: 22%;">
                     <option value="name">Name</option>
                     <option value="dateofbirth">Date of birth</option>
                     <option value="address">Address</option>
                     <option value="phonenumber">Phone number</option>
+                    <option value="department">Department</option>
                 </select>
-                <div onclick="searchEmployee()" class="btn btn-info p-1 pl-2 pr-2" style=" height: 35.2px">Search</div>
+                <div onclick="searchEmployee()" class="btn btn-info p-1 pl-2 pr-2">Search</div>
             </form>
             <table class="table table-striped ml-4" style="width: 95%;">
                 <thead class="font-weight-bold" style="background-color: #e7e7e7;">

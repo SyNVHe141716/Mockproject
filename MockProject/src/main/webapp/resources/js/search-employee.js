@@ -1,13 +1,23 @@
 function changeCategory(){
     var category = document.getElementById('category').value;
     if(category == 'name' || category == 'address'){
+        document.getElementById('input-search').style.display = 'block';
         document.getElementById('input-search').type = 'text';
+        document.getElementById('selectdepartment').style.display = 'none';
     }
     else if(category == 'dateofbirth'){
+        document.getElementById('input-search').style.display = 'block';
         document.getElementById('input-search').type = 'date';
+        document.getElementById('selectdepartment').style.display = 'none';
     }
     else if(category == 'phonenumber'){
+        document.getElementById('input-search').style.display = 'block';
         document.getElementById('input-search').type = 'tel';
+        document.getElementById('selectdepartment').style.display = 'none';
+    }
+    else{
+        document.getElementById('selectdepartment').style.display = 'block';
+        document.getElementById('input-search').style.display = 'none';
     }
 }
 
