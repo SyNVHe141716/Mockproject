@@ -46,15 +46,15 @@
                         <tr>
                             <td class="font-weight-bold pr-5 pt-2 pb-2">Place <label class="required">(*)</label></td>
                             <td><select name="trip" class="box form-control pt-2 pb-2 text-sm">
-                                    <option value="quaySo1" selected>Quầy số 1</option>
-                                    <option value="quaySo2">Quầy số 2</option>
-                                    <option value="quaySo3">Quầy số 3</option>
+                                    <option value="quaySo1" selected>Quay so 1</option>
+                                    <option value="quaySo2">Quay so 2</option>
+                                    <option value="quaySo3">Quay so 3</option>
                                 </select></td>
                         </tr>
                         <tr>
                             <td class="font-weight-bold pr-5 pt-2 pb-2">Price <label class="required">(*)</label></td>
                             <td><input name="price" type="number" class="box form-control pt-2 pb-2 text-sm"
-                                    id="price">(VNĐ)</td>
+                                    id="price">(VND)</td>
                         </tr>
                         <tr>
 					<td class="font-weight-bold pr-5 pt-2 pb-2">Contract deadline
