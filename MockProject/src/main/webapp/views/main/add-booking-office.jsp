@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
-		<jsp:include page="../sidebar/sidebar-booking-office-manager.jsp"></jsp:include>
+		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
 		<form action="#" method="get"
 			class="float-left main-content border-top"

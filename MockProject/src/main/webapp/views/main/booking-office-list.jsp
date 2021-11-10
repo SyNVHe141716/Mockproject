@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
-		<jsp:include page="../sidebar/sidebar-booking-office-manager.jsp"></jsp:include>
+		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 		<div class="float-left main-content border-top">
             <h2 class="m-4">Booking office list</h2>
             <hr class="m-4">
