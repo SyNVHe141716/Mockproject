@@ -2,7 +2,7 @@ function clickAdd() {
 	if (!checkBookingOfficeName()) {
 		alert('Booking office name is invalid');
 	}
-	else if (!checkPhoneNumber) {
+	else if (!checkPhoneNumber()) {
 		alert('Phone number is invalid');
 	}
 	else if (!checkPrice) {

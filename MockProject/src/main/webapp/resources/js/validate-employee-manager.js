@@ -2,7 +2,7 @@ function clickAdd() {
 	if (!checkFullName()) {
 		alert('Full name is invalid');
 	}
-	else if (!checkPhoneNumber) {
+	else if (!checkPhoneNumber()) {
 		alert('Phone number is invalid');
 	}
 	else if (document.getElementById('dateofbirth').value == '') {
@@ -26,7 +26,7 @@ function clickUpdate(){
     if(document.getElementById('fullname').value == ''){
         alert('Full name cannot be blank');
     }
-    else if(!checkPhoneNumber){
+    else if(!checkPhoneNumber()){
         alert('Phone number is invalid');
     }
     else if(document.getElementById('dateofbirth').value == ''){
