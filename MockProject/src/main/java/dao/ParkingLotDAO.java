@@ -13,9 +13,13 @@ import entities.ParkingLot;
 public interface ParkingLotDAO {
 	public List<ParkingLot> getAll() throws SQLException;
 	public boolean add(ParkingLot parkingLot) throws SQLException;
-	public boolean delete(ParkingLot parkingLot) throws SQLException;
+	public boolean delete(int id) throws SQLException;
 	public boolean update(ParkingLot parkingLot) throws SQLException;
+	public ParkingLot getById(int id) throws SQLException;
 	public List<ParkingLot> searchByName(String txtSearch) throws SQLException;
-	public List<ParkingLot> searchByPlace(String txtSearch) throws SQLException;
+	public List<ParkingLot> searchByPlace(int placeId) throws SQLException;
+	public List<ParkingLot> searchByStatus(int status) throws SQLException;
+	public List<ParkingLot> searchByArea(int minArea, int maxArea) throws SQLException;
+	public List<ParkingLot> searchByPrice(int minPrice, int maxPrice) throws SQLException;
 	
 }

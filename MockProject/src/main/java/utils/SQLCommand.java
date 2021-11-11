@@ -31,12 +31,30 @@ public class SQLCommand {
 	
 	/*
 	 * SQL Command Parking Lot
-	 * Author: KiemNV13
+	 * Author: KienNV13
 	 * Create Date: 09/11/2021
 	 * */
 	public static final String GET_ALL_PARKING_LOT = "SELECT * FROM packinglot";
-	public static final String ADD_PARKING_LOT = "INSERT INTO packinglot( [packName], [packPlace], [packArea] , [packPrice], [packStatus]) VALUES(?, ?, ?, ?, ?)";
+	public static final String ADD_PARKING_LOT = "INSERT INTO packinglot( [packName], [packPlaceId], [packArea] , [packPrice], [packStatus]) VALUES(?, ?, ?, ?, ?)";
+	public static final String DELETE_PARKING_LOT = "DELETE FROM packinglot WHERE packId = ?";
+	public static final String UPDATE_PARKING_LOT = "UPDATE packinglot SET packName = ?, packPlaceId = ?, packArea = ?, packPrice = ?, packStatus = ? WHERE packId = ?";
+	public static final String GET_PARKINGLOT_BY_ID = "SELECT * FROM packinglot WHERE packId = ?";
+	public static final String QUERY_SEARCH_PARKINGLOT_BY_NAME = "SELECT * FROM packinglot WHERE packName LIKE ?";
+	public static final String QUERY_SEARCH_PARKINGLOT_BY_PLACE_ID = "SELECT * FROM packinglot WHERE packPlaceId = ?";
+	public static final String QUERY_SEARCH_PARKINGLOT_BY_STATUS = "SELECT * FROM packinglot WHERE packStatus = ?";
+	public static final String QUERY_SEARCH_PARKINGLOT_BY_AREA = "SELECT * FROM packinglot WHERE packArea BETWEEN ? AND ?";
+	public static final String QUERY_SEARCH_PARKINGLOT_BY_PRICE = "SELECT * FROM packinglot WHERE packPrice BETWEEN ? AND ?";
+
 	
+	/**
+	 * SQL Command Parking Place
+	 * Author: KienNV13
+	 * Create Date: 10/11/2021
+	 */
+	public static final String GET_ALL_PARKING_PLACE = "SELECT * FROM packPlace";
+	public static final String GET_PARKING_PLACE_BY_ID =  "SELECT * FROM packPlace WHERE packPlaceId = ?";
+	
+	//=============================================================
 	public static final String QUERY_GET_Booking_List = "SELECT officeId,officeName,t.destination\r\n"
 			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n"
 			+ "ORDER BY officeId\r\n"
@@ -50,4 +68,6 @@ public class SQLCommand {
 	public static final String QUERY_UPDATE_Booking="UPDATE bookingoffice \r\n"
 			+ "SET officeName=? , tripId=1,officePhone=?,officePlace=?,officePrice=?,startContractDeadline=?,endContractDeadline=?\r\n"
 			+ "WHERE officeId=?" ;
+
+	
 }

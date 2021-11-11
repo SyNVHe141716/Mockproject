@@ -5,11 +5,12 @@ import java.io.Serializable;
 public class ParkingLot implements Serializable {
 	/**
 	 * @author KienNV13
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
-	private String place;
+	private int placeId;
 	private int area;
 	private int price;
 	private boolean status;
@@ -18,20 +19,20 @@ public class ParkingLot implements Serializable {
 		super();
 	}
 
-	public ParkingLot(String name, String place, int area, int price, boolean status) {
+	public ParkingLot(String name, int placeId, int area, int price, boolean status) {
 		super();
 		this.name = name;
-		this.place = place;
+		this.placeId = placeId;
 		this.area = area;
 		this.price = price;
 		this.status = status;
 	}
 
-	public ParkingLot(int id, String name, String place, int area, int price, boolean status) {
+	public ParkingLot(int id, String name, int placeId, int area, int price, boolean status) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.place = place;
+		this.placeId = placeId;
 		this.area = area;
 		this.price = price;
 		this.status = status;
@@ -53,12 +54,12 @@ public class ParkingLot implements Serializable {
 		this.name = name;
 	}
 
-	public String getPlace() {
-		return place;
+	public int getPlaceId() {
+		return placeId;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
+	public void setPlaceId(int placeId) {
+		this.placeId = placeId;
 	}
 
 	public int getArea() {
@@ -87,7 +88,7 @@ public class ParkingLot implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ParkingLot [id=" + id + ", name=" + name + ", place=" + place + ", area=" + area + ", price=" + price
+		return "ParkingLot [id=" + id + ", name=" + name + ", place=" + placeId + ", area=" + area + ", price=" + price
 				+ ", status=" + status + "]";
 	}
 	
