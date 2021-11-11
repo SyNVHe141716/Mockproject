@@ -17,50 +17,52 @@
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
 		<form action="#" method="get"
-			class="float-left main-content border-top" id="form-edit-delete-car">
-			<h2 class="m-4">Edit-Delete Car</h2>
+			class="float-left main-content border-top" id="form-edit-delete-trip">
+			<h2 class="m-4">Add Trip</h2>
 			<hr class="m-4">
 			<table class="m-4">
 				<tr>
-					<td class="font-weight-bold pr-5 pt-2 pb-2">License plate <label
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Destination <label
 						class="required">(*)</label>
 					</td>
 					<td><input class="box form-control pt-2 pb-2 text-sm"
-						placeholder="Enter license plate" type="text" name="licensePlate"
-						id="licensePlate" required></td>
+						placeholder="Enter destination" type="text" name="destination"
+						id="destination" required></td>
 				</tr>
 				<tr>
-					<td class="font-weight-bold pr-5 pt-2 pb-2">Car type</td>
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Departure time<label
+						class="required">(*)</label></td>
+					<td><input class="box form-control pt-2 pb-2 text-sm"
+						placeholder="--:-- --" type="text" name="departureTime"
+						id="departureTime" required></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Driver<label
+						class="required">(*)</label></td>
+					<td><input class="box form-control pt-2 pb-2 text-sm"
+						placeholder="Enter driver" type="text" name="driver" id="driver"
+						required></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Car type<label
+						class="required">(*)</label></td>
 					<td><input class="box form-control pt-2 pb-2 text-sm"
 						placeholder="Enter car type" type="text" name="carType"
 						id="carType" required></td>
 				</tr>
 				<tr>
-					<td class="font-weight-bold pr-5 pt-2 pb-2">Car color</td>
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Maximum online
+						ticket number<label class="required">(*)</label>
+					</td>
 					<td><input class="box form-control pt-2 pb-2 text-sm"
-						placeholder="Enter car color" type="text" name="carColor"
-						id="carColor" required></td>
+						placeholder="0" type="text" name="maximum" id="maximum" required></td>
 				</tr>
 				<tr>
-					<td class="font-weight-bold pr-5 pt-2 pb-2">Company <label
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Departure date<label
 						class="required">(*)</label></td>
-					<td><select name="company"
-						class="box form-control pt-2 pb-2 text-sm">
-							<option value="phuongTrang" selected>Phuong Trang</option>
-							<option value="camVan">Cam Van</option>
-							<option value="hoangLong">Hoang Long</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td class="font-weight-bold pr-5 pt-2 pb-2">Parking lot <label
-						class="required">(*)</label></td>
-					<td><select name="parkingLot"
-						class="box form-control pt-2 pb-2 text-sm">
-							<option value=" " selected></option>
-							<option value="baiso1">Bai so 1</option>
-							<option value="baiso2">Bai so 2</option>
-							<option value="baiso3">Bai so 3</option>
-					</select></td>
+					<td><input class="box form-control pt-2 pb-2 text-sm"
+						placeholder="dd//mm//yyyy" type="date" name="departureDate"
+						id="departureDate" required></td>
 				</tr>
 			</table>
 			<div class="d-flex list-btn">

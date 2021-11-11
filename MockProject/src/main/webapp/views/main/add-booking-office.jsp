@@ -64,8 +64,9 @@
 				<tr>
 					<td class="font-weight-bold pr-5 pt-2 pb-2">Price <label
 						class="required">(*)</label></td>
-					<td class="d-flex align-items-center justify-content-center"><input name="price" type="number"
-						class="box form-control pt-2 pb-2 text-sm" id="price">VND</td>
+					<td class="d-flex align-items-center justify-content-center"><input
+						name="price" type="number"
+						class="box form-control pt-2 pb-2 text-sm" id="price">(VND)</td>
 				</tr>
 				<tr>
 					<td class="font-weight-bold pr-5 pt-2 pb-2">Contract deadline
@@ -111,5 +112,4 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 </body>
-
 </html>

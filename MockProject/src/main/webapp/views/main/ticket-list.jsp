@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,7 @@
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
+<jsp:useBean id="now" class="java.util.Date" />
 <jsp:include page="../header/header.jsp"></jsp:include>
 <div>
 <jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
@@ -50,16 +53,20 @@
                 </select>
                 <button class="btn btn-info p-1 pl-2 pr-2 float-right">Search</button>
                 <select name="day" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
-                    <option>1</option>
-                    <option>2</option>
+                	<c:forEach begin="1" end="31" step="1" var="d">
+                    	<option value="${d}">${d}</option>
+                    </c:forEach>
                 </select>
                 <select name="month" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
-                    <option>1</option>
-                    <option>2</option>
+                	<c:forEach begin="1" end="12" step="1" var="m">
+                    	<option value="${m }">${m }</option>
+                    </c:forEach>
                 </select>
                 <select name="year" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
-                    <option>1990</option>
-                    <option>2021</option>
+                <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+                <c:forEach begin="1999" end="${year }" var="y">
+                    <option value="${y }">${y }</option>
+                    </c:forEach>
                 </select>
             </form>
             <table class="table table-striped ml-4" style="width: 95%;">

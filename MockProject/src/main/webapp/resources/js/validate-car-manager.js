@@ -9,7 +9,7 @@ function clickAdd() {
 		alert('Car color is invalid');
 	}
 	else {
-		document.getElementById('form-add-booking-office').submit();
+		document.getElementById('form-add-car').submit();
 	}
 }
 
@@ -56,4 +56,27 @@ function clickReset() {
 	document.getElementById('licensePlate').value = '';
 	document.getElementById('carType').value = '';
 	document.getElementById('carColor').value = '';
+}
+
+function clickUpdate() {
+	if (!checkLicensePlate()) {
+		alert('License plate is invalid');
+	}
+	if (!checkCarType()) {
+		alert('Car type is invalid');
+	}
+	if (!checkCarColor()) {
+		alert('Car color is invalid');
+	}
+	else {
+		document.getElementById('form-edit-delete-car').submit();
+	}
+}
+
+function clickDetele() {
+	var check = confirm('Are you sure want to delete?');
+	var id = document.getElementById('licensePlate').value;
+	if (check) {
+		window.location.href = '#';
+	}
 }
