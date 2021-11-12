@@ -13,26 +13,21 @@ public class Ticket implements Serializable {
 	private String customerName;
 	private String licensePlate;
 	private String tripId;
+	private String tripName;
 	
 	public Ticket() {
 		super();
 	}
 
-	public Ticket(Time bookingTime, String customerName, String licensePlate, String tripId) {
-		super();
-		this.bookingTime = bookingTime;
-		this.customerName = customerName;
-		this.licensePlate = licensePlate;
-		this.tripId = tripId;
-	}
-
-	public Ticket(int ticketId, Time bookingTime, String customerName, String licensePlate, String tripId) {
+	public Ticket(int ticketId, Time bookingTime, String customerName, String licensePlate, String tripId,
+			String tripName) {
 		super();
 		this.ticketId = ticketId;
 		this.bookingTime = bookingTime;
 		this.customerName = customerName;
 		this.licensePlate = licensePlate;
 		this.tripId = tripId;
+		this.tripName = tripName;
 	}
 
 	public int getTicketId() {
@@ -75,10 +70,22 @@ public class Ticket implements Serializable {
 		this.tripId = tripId;
 	}
 
+	public String getTripName() {
+		return tripName;
+	}
+
+	public void setTripName(String tripName) {
+		this.tripName = tripName;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", bookingTime=" + bookingTime + ", customerName=" + customerName
-				+ ", licensePlate=" + licensePlate + ", tripId=" + tripId + "]";
+				+ ", licensePlate=" + licensePlate + ", tripId=" + tripId + ", tripName=" + tripName + "]";
 	}
 	
 	

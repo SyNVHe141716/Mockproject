@@ -22,8 +22,19 @@
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="Car Search" class="box-search border-custom p-1 mr-2"
-					style="width: 35%;"> <i
-					class="fas fa-filter bg-custom border border-icon-search p-2">
+					style="width: 35%;"> <select
+					class="box-search border-custom p-1 mr-2 pr-5" id="selectCompany"
+					name="selectCompany" style="display: none;">
+					<option>Phuong Trang</option>
+					<option>Cam Van</option>
+					<option>Hoang Long</option>
+				</select> <select class="box-search border-custom p-1 mr-2 pr-5"
+					id="selectParkingLot" name="selectParkingLot"
+					style="display: none;">
+					<option>Bai so 1</option>
+					<option>Bai so 2</option>
+					<option>Bai so 3</option>
+				</select> <i class="fas fa-filter bg-custom border border-icon-search p-2">
 					<p class="d-inline font-weight-normal">Filter by</p>
 				</i> <select onchange="changeCategory()" name="category" id="category"
 					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
@@ -71,7 +82,7 @@
 
 
 	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../resources/js/search-employee.js"></script>
+	<script src="../../resources/js/search-car.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

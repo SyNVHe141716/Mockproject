@@ -5,7 +5,7 @@ function clickAdd() {
 	else if (!checkPhoneNumber()) {
 		alert('Phone number is invalid');
 	}
-	else if (!checkPrice) {
+	else if (!checkPrice()) {
 		alert('Price is invalid');
 	}
 	else if (document.getElementById('fromDate').value == '') {
@@ -73,7 +73,7 @@ function clickUpdate() {
 	else if (!checkPhoneNumber()) {
 		alert('Phone number is invalid');
 	}
-	else if (!checkPrice) {
+	else if (!checkPrice()) {
 		alert('Price is invalid');
 	}
 	else if (document.getElementById('fromDate').value == '') {

@@ -20,7 +20,8 @@
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
 		<form action="#" method="get"
-			class="float-left main-content border-top" id="form-edit-delete-booking-office">
+			class="float-left main-content border-top"
+			id="form-edit-delete-booking-office">
 			<h2 class="m-4">Edit-Delete Booking Office</h2>
 			<hr class="m-4">
 			<table class="m-4">
@@ -106,6 +107,7 @@
 		</form>
 	</div>
 
+	<script src="../../resources/js/validate-booking-office-manager.js"></script>
 	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script

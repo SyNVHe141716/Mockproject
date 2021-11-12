@@ -25,7 +25,7 @@
             <form id="form-search" class="float-right d-flex mr-lg-5 mb-4 justify-content-end">
                 <i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
                 <input id="input-search" name="name-search" type="text" placeholder="Ticket Search"
-                    class="box-search border-custom mr-2" style="display: none;">
+                    class="box-search border-custom mr-2" style="display: none;" value="${cn }">
                 <input id="from" name="from" type="time" placeholder="From" class="box-search border-custom mr-2"
                     style="display: none;">
                 <div style="display: none; margin: auto 0px;" id="text-to">-</div>
@@ -52,17 +52,14 @@
                     <option value="booking-time">Booking time</option>
                 </select>
                 <button class="btn btn-info p-1 pl-2 pr-2 float-right">Search</button>
-                <select name="day" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
-                	<c:forEach begin="1" end="31" step="1" var="d">
-                    	<option value="${d}">${d}</option>
-                    </c:forEach>
+                <select id="day" name="day" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
                 </select>
-                <select name="month" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
+                <select id="month" onchange="selectDate()" name="month" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
                 	<c:forEach begin="1" end="12" step="1" var="m">
                     	<option value="${m }">${m }</option>
                     </c:forEach>
                 </select>
-                <select name="year" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
+                <select id="year" onchange="selectDate()" name="year" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
                 <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
                 <c:forEach begin="1999" end="${year }" var="y">
                     <option value="${y }">${y }</option>
