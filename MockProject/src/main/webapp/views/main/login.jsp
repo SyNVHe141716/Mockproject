@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Login</title>
 <link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/fonts/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 <link rel="stylesheet" href="../../resources/css/Login-screen.css">
 </head>
 <body>
@@ -21,13 +21,13 @@
                     <div>
                         <h3 id="heading">Log in:</h3>
                     </div>
-                    <input id='username' oninput="checkNull()" class="form-control text-zoom" type="text" placeholder="Username" />
-                    <input id='password' oninput="checkNull()" class="form-control text-zoom" type="password" placeholder="Password" />
+                    <input id='username' class="form-control text-zoom" type="text" placeholder="Username" required="required"/>
+                    <input id='password' class="form-control text-zoom" type="password" placeholder="Password" required="required"/>
                     <label class="m-0" class="remember">
                         <input type="checkbox"/>
                         Remember me
                     </label>
-                    <button class="btn btn-primary" disabled id="button" style="background-color:#007ac9;" type="submit">Login</button>
+                    <button class="btn btn-primary" id="button" style="background-color:#007ac9;" type="submit">Login</button>
                 </div>
             </div>
         </form>
