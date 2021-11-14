@@ -44,7 +44,8 @@ public class SQLCommand {
 	public static final String QUERY_SEARCH_PARKINGLOT_BY_STATUS = "SELECT * FROM packinglot WHERE packStatus = ?";
 	public static final String QUERY_SEARCH_PARKINGLOT_BY_AREA = "SELECT * FROM packinglot WHERE packArea BETWEEN ? AND ?";
 	public static final String QUERY_SEARCH_PARKINGLOT_BY_PRICE = "SELECT * FROM packinglot WHERE packPrice BETWEEN ? AND ?";
-
+	public static final String GET_PARKINGLOT_BY_PAGE = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY [packId] ASC) AS rn, * FROM [packinglot]) AS x WHERE rn BETWEEN (?-1)*?+1 and ?*?";
+	public static final String GET_PARKINGLOT_BY_NAME = "SELECT * FROM packinglot WHERE packName = ?";
 	
 	/**
 	 * SQL Command Parking Place
@@ -68,6 +69,8 @@ public class SQLCommand {
 	public static final String QUERY_UPDATE_Booking="UPDATE bookingoffice \r\n"
 			+ "SET officeName=? , tripId=1,officePhone=?,officePlace=?,officePrice=?,startContractDeadline=?,endContractDeadline=?\r\n"
 			+ "WHERE officeId=?" ;
+
+
 
 	
 }

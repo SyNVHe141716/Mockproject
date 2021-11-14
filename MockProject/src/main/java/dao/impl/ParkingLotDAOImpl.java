@@ -307,7 +307,7 @@ public class ParkingLotDAOImpl implements ParkingLotDAO {
 		}
 		return parkingLots;
 	}
-	
+
 	@Override
 	public ParkingLot getById(int id) throws SQLException {
 		try {
@@ -316,7 +316,7 @@ public class ParkingLotDAOImpl implements ParkingLotDAO {
 			pre = con.prepareStatement(SQLCommand.GET_PARKINGLOT_BY_ID);
 			pre.setInt(++param, id);
 			rs = pre.executeQuery();
-			
+
 			while (rs.next()) {
 				ParkingLot parkingLot = new ParkingLot();
 				parkingLot.setId(rs.getInt("packId"));
@@ -327,6 +327,7 @@ public class ParkingLotDAOImpl implements ParkingLotDAO {
 				parkingLot.setStatus(rs.getBoolean("packStatus"));
 				return parkingLot;
 			}
+
 		} finally {
 			if (rs != null) {
 				rs.close();
@@ -342,4 +343,80 @@ public class ParkingLotDAOImpl implements ParkingLotDAO {
 		return null;
 	}
 
+	@Override
+	public List<ParkingLot> getByPage(int pageIndex, int pageSize) throws SQLException {
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_PARKINGLOT_BY_PAGE);
+			pre.setInt(1, pageIndex);
+			pre.setInt(2, pageSize);
+			pre.setInt(3, pageIndex);
+			pre.setInt(4, pageSize);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				ParkingLot parkingLot = new ParkingLot();
+				parkingLot.setId(rs.getInt("packId"));
+				parkingLot.setArea(rs.getInt("packArea"));
+				parkingLot.setName(rs.getString("packName"));
+				parkingLot.setPlaceId(rs.getInt("packPlaceId"));
+				parkingLot.setPrice(rs.getInt("packPrice"));
+				parkingLot.setStatus(rs.getBoolean("packStatus"));
+				parkingLots.add(parkingLot);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return parkingLots;
+	}
+
+
+	@Override
+	public ParkingLot getByName(String name) throws SQLException {
+		try {
+			int param = 0;
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_PARKINGLOT_BY_NAME);
+			pre.setString(++param, name);
+			rs = pre.executeQuery();
+
+			while (rs.next()) {
+				ParkingLot parkingLot = new ParkingLot();
+				parkingLot.setId(rs.getInt("packId"));
+				parkingLot.setArea(rs.getInt("packArea"));
+				parkingLot.setName(rs.getString("packName"));
+				parkingLot.setPlaceId(rs.getInt("packPlaceId"));
+				parkingLot.setPrice(rs.getInt("packPrice"));
+				parkingLot.setStatus(rs.getBoolean("packStatus"));
+				return parkingLot;
+			}
+
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return null;
+	}
+
+//	public static void main(String[] args) throws SQLException {
+//		ParkingLotDAO p = new ParkingLotDAOImpl();
+//		p.searchByPlace(1).forEach(System.out::println);
+//	}
 }
