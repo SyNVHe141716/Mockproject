@@ -29,12 +29,10 @@
         </div>
 
 	<script>
-		var list = document.getElementById("EmployeeList");
-		var add = document.getElementById("AddEmployee");
 		if (window.location.pathname.includes("employee-list.jsp")) {
-			list.classList.add("active");
+			document.getElementById("EmployeeList").classList.add("active");
 		} else if (window.location.pathname.includes("add-employee.jsp")) {
-			add.classList.add("active");
+			document.getElementById("AddEmployee").classList.add("active");
 		}
 	</script>
 </body>

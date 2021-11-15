@@ -76,10 +76,10 @@
 							class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="bookingOfficeList" href="ticket-list.jsp"
+					<a id="ticketList" href="ticket-list.jsp"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Ticket list</a>
-					<a id="addBookingOffice" href="add-ticket.jsp"
+					<a id="addTicket" href="add-ticket.jsp"
 						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
 						ticket</a>
 				</details></li>
@@ -87,14 +87,37 @@
 	</div>
 
 	<script>
-		var listBookingOffice = document.getElementById("bookingOfficeList");
-		var addBookingOffice = document.getElementById("addBookingOffice");
-
-		if (window.location.pathname.includes("booking-office-list.jsp")) {
-			listBookingOffice.classList.add("active");
-		} else if (window.location.pathname.includes("add-booking-office.jsp")) {
-			addBookingOffice.classList.add("active");
-		}
+	var pathName = window.location.pathname;
+	if(pathName.includes('add-booking-office.jsp')){
+		document.getElementById('addBookingOffice').classList.add("active");
+	}
+	else if(pathName.includes('booking-office-list.jsp')){
+		document.getElementById('bookingOfficeList').classList.add("active");
+	}
+	else if(pathName.includes('add-parking-lot')){
+		document.getElementById('addParkingLot').classList.add("active");
+	}
+	else if(pathName.includes('parking-lot-list')){
+		document.getElementById('parkingLotList').classList.add("active");
+	}
+	else if(pathName.includes('car-list.jsp')){
+		document.getElementById('carList').classList.add("active");
+	}
+	else if(pathName.includes('add-car.jsp') || pathName.includes('edit-delete-car.jsp')){
+		document.getElementById('addCar').classList.add("active");
+	}
+	else if(pathName.includes('add-trip.jsp')){
+		document.getElementById('addTrip').classList.add("active");
+	}
+	else if(pathName.includes('trip-list.jsp')){
+		document.getElementById('tripList').classList.add("active");
+	}
+	else if(pathName.includes('add-ticket.jsp')){
+		document.getElementById('addTicket').classList.add("active");
+	}
+	else if(pathName.includes('ticket-list.jsp')){
+		document.getElementById('ticketList').classList.add("active");
+	}
 	</script>
 </body>
 </html>

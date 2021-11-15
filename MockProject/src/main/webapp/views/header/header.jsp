@@ -12,7 +12,8 @@
 </head>
 <body>
 	<header class="navbar bg-light w-100 p-3 border-top border-dark">
-		<div id="icon-nav" class="" style="color: gray;">
+		<div style="color: gray;">
+			<i id="icon-nav"></i>
 			<label id="nav-title" style="font-family: sans-serif; font-weight: normal; margin: 0px; margin-left: 5px;"></label>
 		</div>
 		<div>
@@ -22,10 +23,38 @@
 	</header>
 
 	<script type="text/javascript">
-		if (window.location.pathname.includes('add-employee.jsp')) {
+	var pathName = window.location.pathname;
+		if (pathName.includes('add-employee.jsp') || pathName.includes('employee-list.jsp') || pathName.includes('view-employee.jsp')) {
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-users");
 			document.getElementById("nav-title").innerHTML = 'Employee';
+		}
+		else if(pathName.includes('add-booking-office.jsp') || pathName.includes('booking-office-list.jsp') || pathName.includes('edit-delete-booking-office.jsp')){
+			document.getElementById("icon-nav").classList.add("fas");
+			document.getElementById("icon-nav").classList.add("fa-cart-plus");
+			document.getElementById("nav-title").innerHTML = 'Booking office';
+		}
+		else if(pathName.includes('add-parking-lot.jsp') || pathName.includes('parking-lot-list.jsp') || pathName.includes('edit-parking-lot.jsp')){
+			document.getElementById("icon-nav").classList.add("fas");
+			document.getElementById("icon-nav").classList.add("fa-map-marker-alt");
+			document.getElementById("nav-title").innerHTML = 'Parking lot';
+		}
+		else if(pathName.includes('add-car.jsp') || pathName.includes('car-list.jsp') || pathName.includes('edit-delete-car.jsp')){
+			document.getElementById("icon-nav").classList.add("fas");
+			document.getElementById("icon-nav").classList.add("fa-car");
+			document.getElementById("nav-title").innerHTML = 'Car';
+		}
+		else if(pathName.includes('add-trip.jsp') || pathName.includes('trip-list.jsp') || pathName.includes('edit-delete-trip.jsp')){
+			document.getElementById("icon-nav").classList.add("fas");
+			document.getElementById("icon-nav").classList.add("fa-plane");
+			document.getElementById("icon-nav").style.transform = 'rotate(-45deg)';
+			document.getElementById("nav-title").innerHTML = 'Trip';
+		}
+		else if(pathName.includes('add-ticket.jsp') || pathName.includes('ticket-list.jsp') || pathName.includes('edit-ticket.jsp')){
+			document.getElementById("icon-nav").classList.add("fas");
+			document.getElementById("icon-nav").classList.add("fa-ticket-alt");
+			document.getElementById("icon-nav").style.transform = 'rotate(-45deg)';
+			document.getElementById("nav-title").innerHTML = 'Ticket';
 		}
 	</script>
 	
