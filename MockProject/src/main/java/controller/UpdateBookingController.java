@@ -73,8 +73,6 @@ public class UpdateBookingController extends HttpServlet {
 		String todate=request.getParameter("toDate");
 	    Date from = Date.valueOf(fromdate);
 	    Date to = Date.valueOf(todate);
-	    
-	  
 	    BookingOffice boo = new BookingOffice(id, name, phone, Place, pr, from, to, tripid);
 		BookingDaoImpl bk = new BookingDaoImpl();
 		List<Trip> lsTrip;

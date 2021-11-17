@@ -122,8 +122,9 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 			ps.setString(1, booking.getOfficeName());
 			ps.setInt(2, booking.getTripid());
 			ps.setString(3, booking.getOfficePhone());
-			ps.setInt(4, booking.getOfficePrice());
-			ps.setString(5, booking.getOfficePlace());
+			ps.setString(4, booking.getOfficePlace());
+			ps.setInt(5, booking.getOfficePrice());
+			
 			ps.setDate(6, booking.getStartContractDeadline());
 			ps.setDate(7, booking.getEndContractDeadline());
 			ps.setInt(8, booking.getOfficeId());
@@ -394,7 +395,7 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 //		try {
 //			
 //			BookingOffice boo= new BookingOffice(4, "sy", "1", "123", 1, date, date, 1);
-//			boolean kq = bk.updateBooking(boo);
+	//	boolean kq = bk.updateBooking(boo);
 //			if(kq==true) {
 //				System.out.println("success");
 //			}else {

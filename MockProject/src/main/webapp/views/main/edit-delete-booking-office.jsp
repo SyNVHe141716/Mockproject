@@ -41,7 +41,7 @@
 					<td><select name="trip"
 						class="box form-control pt-2 pb-2 text-sm">
 							<c:forEach items="${ lstrip}" var="o">
-							<option ${tripid == o.tripId ? "selected":"" } value="${o. tripId}"  >${o.destination }</option>
+							<option ${bk.tripid == o.tripId ? "selected":"" } value="${o. tripId}"  >${o.destination }</option>
 							
 							</c:forEach>
 					</select></td>
@@ -60,7 +60,7 @@
 					<td><select name="place"
 						class="box form-control pt-2 pb-2 text-sm">
 							<c:forEach items="${lsBk}" var="i">
-							<option ${place == i.officePlace ? "selected":"" } >${i.officePlace }</option>
+							<option ${bk.officePlace == i.officePlace ? "selected":"" }  value="${i.officePlace }" >${i.officePlace }</option>
 							
 							</c:forEach>
 					</select></td>
