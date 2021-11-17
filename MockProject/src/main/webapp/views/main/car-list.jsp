@@ -65,7 +65,7 @@
 						<td>Hoang Long</td>
 						<td><a href="#">Bai so 2</a></td>
 						<td><a href="#"><i class="far fa-edit"></i>Edit</a> <a
-							href="#"><i class="far fa-trash-alt"></i>Delete</a></td>
+							onclick="clickDelete()" href="#"><i class="far fa-trash-alt"></i>Delete</a></td>
 					</tr>
 				</tbody>
 			</table>
