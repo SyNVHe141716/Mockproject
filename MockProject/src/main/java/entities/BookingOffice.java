@@ -8,6 +8,7 @@ public class BookingOffice implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int stt;
 	private int officeId;
 	private String officeName;
 	private String officePhone;
@@ -19,6 +20,49 @@ public class BookingOffice implements Serializable{
 	private int tripid;
 	
 	
+	
+
+	public int getStt() {
+		return stt;
+	}
+
+	public void setStt(int stt) {
+		this.stt = stt;
+	}
+
+	public BookingOffice(int officeId) {
+		super();
+		this.officeId = officeId;
+	}
+
+	public BookingOffice(int stt, int officeId, String officeName, String officePhone, String officePlace,
+			int officePrice, Date startContractDeadline, Date endContractDeadline, String destination, int tripid) {
+		super();
+		this.stt = stt;
+		this.officeId = officeId;
+		this.officeName = officeName;
+		this.officePhone = officePhone;
+		this.officePlace = officePlace;
+		this.officePrice = officePrice;
+		this.startContractDeadline = startContractDeadline;
+		this.endContractDeadline = endContractDeadline;
+		this.destination = destination;
+		this.tripid = tripid;
+	}
+
+	public BookingOffice(int officeId, String officeName, String officePhone, String officePlace, int officePrice,
+			Date startContractDeadline, Date endContractDeadline, int tripid) {
+		super();
+		this.officeId = officeId;
+		this.officeName = officeName;
+		this.officePhone = officePhone;
+		this.officePlace = officePlace;
+		this.officePrice = officePrice;
+		this.startContractDeadline = startContractDeadline;
+		this.endContractDeadline = endContractDeadline;
+		this.tripid = tripid;
+	}
+
 	public int getTripid() {
 		return tripid;
 	}
@@ -60,6 +104,19 @@ public class BookingOffice implements Serializable{
 		this.officeId = officeId;
 		this.officeName = officeName;
 		this.destination = destination;
+	}
+
+
+	public BookingOffice(String officeName, String officePhone, String officePlace, int officePrice,
+			Date startContractDeadline, Date endContractDeadline, int tripid) {
+		super();
+		this.officeName = officeName;
+		this.officePhone = officePhone;
+		this.officePlace = officePlace;
+		this.officePrice = officePrice;
+		this.startContractDeadline = startContractDeadline;
+		this.endContractDeadline = endContractDeadline;
+		this.tripid = tripid;
 	}
 
 	public String getDestination() {

@@ -57,7 +57,8 @@ public class ParkingLotSearchController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String category = request.getParameter("category");
+		String category = request.getParameter(""
+				+ "x");
 		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
 		List<ParkingLot> parkingLotSearch = null;
 		String mess = "";

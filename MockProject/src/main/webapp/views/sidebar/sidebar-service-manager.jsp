@@ -35,10 +35,10 @@
 							class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="bookingOfficeList" href="booking-office-list.jsp"
+					<a id="bookingOfficeList" href="<%=request.getContextPath() %>/booking"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Booking office list</a>
-					<a id="addBookingOffice" href="add-booking-office.jsp"
+					<a id="addBookingOffice" href="<%=request.getContextPath() %>/add"
 						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
 						Booking office</a>
 				</details></li>

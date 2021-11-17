@@ -11,4 +11,5 @@ public interface BookingOfficeDAO {
 	boolean addBooking(BookingOffice booking) throws SQLException;
 	boolean deleteBooking(BookingOffice booking) throws SQLException;
 	boolean updateBooking(BookingOffice booking) throws SQLException;
+	int countBooking() throws SQLException;
 }
