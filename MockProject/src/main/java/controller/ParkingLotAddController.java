@@ -70,7 +70,7 @@ public class ParkingLotAddController extends HttpServlet {
 			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
 			request.setAttribute("parkingPlaces", parkingPlaces);
 
-			if (parkingLotDAO.getByName(name) == null) {
+			if (parkingLotDAO.getByName(name.toLowerCase()) == null) {
 				if (parkingLotDAO.add(parkingLot)) {
 					mess = "Add Parking Lot Successfully!";
 

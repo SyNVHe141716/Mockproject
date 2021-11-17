@@ -43,19 +43,9 @@ public class ParkingLotListController extends HttpServlet {
 			ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
 			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
-			String pageIndex = request.getParameter("index");
-			if (pageIndex == null) {
-				pageIndex = "1";
-			}
-			int index = Integer.parseInt(pageIndex);
-			int total = parkingLotDAO.getAll().size();
-			int pageSize = 5;
-			int maxPage = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
-			List<ParkingLot> parkingLots = parkingLotDAO.getByPage(index, pageSize);
+			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
 			request.setAttribute("parkingPlaces", parkingPlaces);
 			request.setAttribute("parkingLots", parkingLots);
-			request.setAttribute("maxPage", maxPage);
-			request.setAttribute("index", index);
 			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,38 +58,7 @@ public class ParkingLotListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String category = request.getParameter("category");
-		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
-		List<ParkingLot> parkingLotSearch = null;
-		try {
-			if (category.equalsIgnoreCase("name")) {
-				String txtSearch = request.getParameter("name-search");
-				if (!txtSearch.equalsIgnoreCase("")) {
-					parkingLotSearch = parkingLotDAO.searchByName(txtSearch);
-				}
-				String pageIndex = request.getParameter("index");
-				if (pageIndex == null) {
-					pageIndex = "1";
-				}
-				int index = Integer.parseInt(pageIndex);
-				int total = parkingLotSearch.size();
-				int pageSize = 5;
-				int maxPage = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
-				List<ParkingLot> parkingLots = parkingLotDAO.getByPage(index, pageSize);
-				request.setAttribute("parkingLots", parkingLots);
-				request.setAttribute("maxPage", maxPage);
-				request.setAttribute("index", index);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			String mess = "Fail in SQL";
-			request.setAttribute("mess", mess);
-		}
-
 		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
-
-//		int from = Integer.parseInt(request.getParameter("from"));
-//		int to = Integer.parseInt(request.getParameter("to"));
 
 }

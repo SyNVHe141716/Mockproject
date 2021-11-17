@@ -48,14 +48,8 @@ public class ParkingLotDeleteControlller extends HttpServlet {
 			if (pageIndex == null) {
 				pageIndex = "1";
 			}
-			int index = Integer.parseInt(pageIndex);
-			int total = parkingLotDAO.getAll().size();
-			int pageSize = 5;
-			int maxPage = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
-			List<ParkingLot> parkingLots = parkingLotDAO.getByPage(index, pageSize);
+			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
 			request.setAttribute("parkingLots", parkingLots);
-			request.setAttribute("maxPage", maxPage);
-			request.setAttribute("index", index);
 		} catch (Exception e) {
 			mess = "Delete fail in SQL!";
 			e.printStackTrace();

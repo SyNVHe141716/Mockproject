@@ -70,11 +70,16 @@ public class ParkingLotEditController extends HttpServlet {
 		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
 		String mess = "";
 		try {
+			if (parkingLotDAO.getByName(name) == null || parkingLotDAO.getByName(name).getId() == id) {
 			if (parkingLotDAO.update(parkingLotUpdate)) {
 				mess = "Update Sucessfully!";
 
 			} else {
 				mess = "Update Fail!";
+			}
+			}
+			else {
+				mess = "Parking Slot name \"" + name + "\" was existed!";
 			}
 			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
