@@ -115,6 +115,16 @@
 	<script src="resources/js/validate-booking-office-manager.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	 <script type="text/javascript">
+	function clickReset() {
+	document.getElementById('bookingOfficeName').value = '';
+	document.getElementById('phonenumber').value = '';
+	document.getElementById('price').value = '';
+	document.getElementById('fromDate').value = '';
+	document.getElementById('toDate').value = '';
+	document.getElementById('phonenumber').value = '';
+	}
+	</script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 </body>
