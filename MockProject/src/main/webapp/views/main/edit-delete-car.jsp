@@ -64,11 +64,11 @@
 				</tr>
 			</table>
 			<div class="d-flex list-btn">
+				<div onclick="clickReset()" class="btn btn-warning mr-1 text-btn">
+					<i class="fas fa-redo mr-1" style="transform: scaleX(-1);"></i>Reset
+				</div>
 				<div onclick="clickUpdate()" class="btn btn-success mr-1 text-btn">
 					<i class="fas fa-plus mr-1"></i>Update
-				</div>
-				<div onclick="clickDelete()" class="btn btn-danger mr-1 text-btn">
-					<i class="fas fa-trash-alt mr-1"></i>Delete
 				</div>
 			</div>
 		</form>

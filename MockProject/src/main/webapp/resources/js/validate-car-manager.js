@@ -59,9 +59,6 @@ function clickReset() {
 }
 
 function clickUpdate() {
-	if (!checkLicensePlate()) {
-		alert('License plate is invalid');
-	}
 	if (!checkCarType()) {
 		alert('Car type is invalid');
 	}
