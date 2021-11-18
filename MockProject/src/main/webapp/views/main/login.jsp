@@ -21,13 +21,14 @@
                     <div>
                         <h3 id="heading">Log in:</h3>
                     </div>
-                    <input id='username' class="form-control text-zoom" type="text" placeholder="Username" required="required" name="username" value="${username }"/>
+                    <input id='username' class="form-control text-zoom" type="text" placeholder="Username" required="required" name="username" value="${acc }"/>
                     <input id='password' class="form-control text-zoom" type="password" placeholder="Password" required="required" name="password"/>
-                    <label class="m-0" class="remember">
+                    <!-- <label class="m-0" class="remember">
                         <input type="checkbox" name="rememberMe">
                         Remember me
-                    </label>
+                    </label> -->
                     <button class="btn btn-primary" id="button" style="background-color:#007ac9;" type="submit">Login</button>
+                    <i ${acc eq null ? "hidden":"" } style="color: red">Wrong user or password!!!</i>
                 </div>
             </div>
         </form>

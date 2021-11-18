@@ -18,7 +18,7 @@
 		</div>
 		<div>
 			<label style="color: #007bff;" class="mr-4">Welcome test</label> 
-			<a href="LogoutController"> <i class="fas fa-sign-out-alt"></i>Logout</a>
+			<a href="LogOutController"> <i class="fas fa-sign-out-alt"></i>Logout</a>
 		</div>
 	</header>
 
