@@ -9,7 +9,7 @@ public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int employeeId;
 	private String account;
-	private String departmentId;
+	private int departmentId;
 	private String employeeAddress;
 	private String employeeBirthdate;
 	private String employeeEmail;
@@ -24,7 +24,7 @@ public class Employee implements Serializable {
 		super();
 	}
 
-	public Employee(int employeeId, String account, String departmentId, String employeeAddress,
+	public Employee(int employeeId, String account, int departmentId, String employeeAddress,
 			String employeeBirthdate, String employeeEmail, String employeeName, String employeePhone, String password,
 			boolean sex, Boolean role) {
 		super();
@@ -41,7 +41,7 @@ public class Employee implements Serializable {
 		this.role = role;
 	}
 
-	public Employee(String account, String departmentId, String employeeAddress, String employeeBirthdate,
+	public Employee(String account, int departmentId, String employeeAddress, String employeeBirthdate,
 			String employeeEmail, String employeeName, String employeePhone, String password, boolean sex, Boolean role) {
 		super();
 		this.account = account;
@@ -72,11 +72,11 @@ public class Employee implements Serializable {
 		this.account = account;
 	}
 
-	public String getDepartmentId() {
+	public int getDepartmentId() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(String departmentId) {
+	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
 	}
 

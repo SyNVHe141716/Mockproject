@@ -7,9 +7,9 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/css/header.css">
-<link rel="stylesheet" href="../../resources/css/style-main.css">
+	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 		<div class="float-left main-content border-top">
             <h2 class="m-4">Employee List</h2>
             <hr class="m-4">
-            <form id="form-search" class="float-right d-flex mr-lg-5 mb-4 justify-content-end">
+            <form id="form-search" class="float-right d-flex mr-lg-5 mb-4 justify-content-end" action="SearchEmployeeController" method="POST">
                 <i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
                 <input id="input-search" name="input-search" type="text" placeholder="User Search"
                     class="box-search border-custom p-1 mr-2" style="width: 35%; height: 35px;">
@@ -54,15 +54,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<c:forEach items="${employees }" var="emp">
                     <tr>
-                        <td scope="col">1</td>
-                        <td>Nguyen Van Vinh</td>
-                        <td>1994-09-08</td>
-                        <td>Hai Chau, Da Nang</td>
-                        <td>901292</td>
-                        <td>employee</td>
-                        <td><a href="view-employee.jsp"><i class="far fa-eye"></i>View</a></td>
+                        <td scope="col">${emp.employeeId }</td>
+                        <td>${emp.employeeName }</td>
+                        <td>${emp.employeeBirthdate }</td>
+                        <td>${emp.employeeAddress }</td>
+                        <td>${emp.employeePhone }</td>
+                        <c:forEach items="${departments }" var="dep">
+                        	<c:if test = "${dep.departmentId eq emp.departmentId }">
+					         	<td>${dep.departmentName }</td>
+					      	</c:if>
+                        <%-- ${dep.departmentId eq emp.departmentId ?"<td>dep.departmentName</td>":""} --%>
+                        </c:forEach>
+                        <td><a href="ViewEmployeeController?id=${emp.employeeId }"><i class="far fa-eye"></i>View</a></td>
                     </tr>
+                    </c:forEach>
                 </tbody>
             </table>
             <div class="d-flex ml-4">
@@ -76,12 +83,12 @@
 	</div>
 
 
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../resources/js/search-employee.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/js/search-employee.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

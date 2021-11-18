@@ -6,9 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/css/header.css">
-<link rel="stylesheet" href="../../resources/css/style-main.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		
-		<form action="#" method="get" class="float-left main-content border-top" id="form-add-employee">
+		<form action="AddEmployeeController" method="POST" class="float-left main-content border-top" id="form-add-employee">
             <h2 class="m-4">Add Employee</h2>
             <hr class="m-4">
             <table class="m-4">
@@ -38,7 +38,8 @@
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Sex <label class="required">(*)</label></td>
                     <td><input name="sex" type="radio" value="true" checked><label
-                            class="font-weight-bold text-sm">Male</label> <input name="sex" type="radio" class="ml-3"
+                            class="font-weight-bold text-sm">Male</label> 
+                        <input name="sex" type="radio" class="ml-3"
                             value="false"><label class="font-weight-bold text-sm">Female</label></td>
                 </tr>
                 <tr>
@@ -49,12 +50,16 @@
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2 unrequired">Email</td>
                     <td><input name="email" type="email" placeholder="Enter email"
-                            class="box form-control unrequired text-sm" id="email"></td>
+                            class="box form-control unrequired text-sm" id="email">
+                         <p ${checkEmail eq false ? "":"hidden" }>Email exist</p>
+                    </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Account <label class="required">(*)</label></td>
                     <td><input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter account" type="text"
-                            name="account" id="account"></td>
+                            name="account" id="account">
+                        <p ${checkAccount eq false ? "":"hidden" }>Account exist</p>
+                    </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Password <label class="required">(*)</label></td>
@@ -64,9 +69,9 @@
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Department <label class="required">(*)</label></td>
                     <td><select name="department" class="box form-control pt-2 pb-2 text-sm">
-                            <option value="employee" selected>Employee</option>
-                            <option value="parking">Parking</option>
-                            <option value="service">Service</option>
+                            <c:forEach items="${departments }" var="dep">/
+	                    		<option value="${dep.departmentId }">${dep.departmentName }</option>
+	                    	</c:forEach>
                         </select></td>
                 </tr>
             </table>
@@ -80,8 +85,8 @@
         </form>
 	</div>
 
-	<script src="../../resources/js/validate-employee-manager.js"></script>
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/js/validate-employee-manager.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 </body>

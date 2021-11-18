@@ -6,9 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/css/header.css">
-<link rel="stylesheet" href="../../resources/css/style-main.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -16,63 +16,73 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		
-		<form action="#" method="get" class="float-left main-content border-top" id="form-update-employee">
+		<form action="ViewEmployeeController" method="POST" class="float-left main-content border-top" id="form-update-employee">
             <h2 class="m-4">View Employee</h2>
             <hr class="m-4">
             
-            <input type="hidden" name="id" value="" id="id">
-
-            <table class="m-4">
+			<c:forEach items="${employees }" var="emp">
+				<input type="hidden" name="id" value="${emp.employeeId }" id="id">
+				<table class="m-4">
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Full name <label class="required">(*)</label></td>
                     <td><input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter full name" type="text"
-                            name="fullname" id="fullname" required></td>
+                            name="fullname" id="fullname" required value="${emp.employeeName }"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Phone number <label class="required">(*)</label></td>
                     <td><input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter phone number" type="tel"
-                            name="phonenumber" id="phonenumber"></td>
+                            name="phonenumber" id="phonenumber" value="${emp.employeePhone }"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Date of birth <label class="required">(*)</label></td>
                     <td><input name="dateofbirth" type="date" class="box form-control pt-2 pb-2 text-sm"
-                            id="dateofbirth"></td>
+                            id="dateofbirth" value="${emp.employeeBirthdate }"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Sex <label class="required">(*)</label></td>
-                    <td><input name="sex" type="radio" value="true" checked><label
-                            class="font-weight-bold text-sm">Male</label> <input name="sex" type="radio" class="ml-3"
-                            value="false"><label class="font-weight-bold text-sm">Female</label></td>
+                    <td>
+                    	<!-- male --> <input name="sex" type="radio" value="true" ${emp.sex eq true ?"checked":"" }><label
+                            class="font-weight-bold text-sm">Male</label> 
+                            
+                       <!-- female --> <input name="sex" type="radio" class="ml-3"
+                            value="false" ${emp.sex eq true ?"":"checked" }><label class="font-weight-bold text-sm">Female</label></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2 unrequired">Address</td>
                     <td><input name="address" type="text" placeholder="Enter address"
-                            class="box form-control pt-2 pb-2 unrequired text-sm" id="address"></td>
+                            class="box form-control pt-2 pb-2 unrequired text-sm" id="address" value="${emp.employeeAddress }"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2 unrequired">Email</td>
                     <td><input name="email" type="email" placeholder="Enter email"
-                            class="box form-control unrequired text-sm" id="email"></td>
+                            class="box form-control unrequired text-sm" id="email" value="${emp.employeeEmail }">
+                        <p ${checkEmail eq false ? "":"hidden" }>Email exist</p>
+                    </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Account <label class="required">(*)</label></td>
-                    <td><input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter account" type="text"
-                            name="account" id="account"></td>
+                    <td>
+                    	<input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter account" type="text"
+                            name="account" id="account" value="${emp.account }">
+                        <p ${checkAccount eq false ? "":"hidden" }>Account exist</p>
+                    </td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Password <label class="required">(*)</label></td>
                     <td><input class="box form-control pt-2 pb-2 text-sm" placeholder="Enter password" type="password"
-                            name="password" id="password"></td>
+                            name="password" id="password" value="${emp.password }"></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold pr-5 pt-2 pb-2">Department <label class="required">(*)</label></td>
                     <td><select name="department" class="box form-control pt-2 pb-2 text-sm">
-                            <option value="employee" selected>Employee</option>
-                            <option value="parking">Parking</option>
-                            <option value="service">Service</option>
+	                    <c:forEach items="${departments }" var="dep">/
+	                    	<option value="${dep.departmentId }" ${emp.departmentId eq dep.departmentId ?"selected":""} >${dep.departmentName }</option>
+	                    </c:forEach>
                         </select></td>
                 </tr>
             </table>
+			</c:forEach>
+            
             <div class="d-flex list-btn">
                 <div  onclick="window.history.back();" class="btn btn-info mr-1 text-btn"><i class="fas fa-backward mr-1"></i>Back</div>
                 <div onclick="clickReset()" class="btn btn-warning mr-1 text-btn"><i class="fas fa-redo mr-1" style="transform: scaleX(-1);"></i>Reset</div>
@@ -84,8 +94,8 @@
         </form>
 	</div>
 
-	<script src="../../resources/js/validate-employee-manager.js"></script>
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/js/validate-employee-manager.js"></script>
+	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 </body>
