@@ -100,6 +100,7 @@
             </div>
         </div>
 </div>
+
 	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../resources/js/search-ticket.js"></script>
 	<script src="../../resources/js/validate-delete-parking-lot.js"></script>
