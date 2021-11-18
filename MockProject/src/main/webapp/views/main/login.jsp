@@ -8,13 +8,13 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Login</title>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/Login-screen.css">
+<link rel="stylesheet" href="<c:url value='/resources/css/Login-screen.css' />">
 </head>
 <body>
 	<div id="login-one" class="login-one">
-		<form class="login-one-form" action="${pageContext.servletContext.contextPath}/LoginController" method="POST">
+		<form class="login-one-form" action="<%=request.getContextPath() %>/LoginController" method="POST">
             <div class="col">
                 <div class="login-one-ico"><i class="fa fa-unlock-alt" id="lockico"></i></div>
                 <div class="form-group">
@@ -33,7 +33,7 @@
             </div>
         </form>
 	</div>
-	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="${pageContext.servletContext.contextPath}/resources/js/login.js"></script>
+	<script src="<c:url value='/resources/bootstrap/js/bootstrap.min.js' />"></script>
+	<script src="<c:url value='/resources/js/login.js' />"></script>
 </body>
 </html>

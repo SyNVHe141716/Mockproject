@@ -44,7 +44,7 @@ public class ViewEmployeeController extends HttpServlet {
 		try {
 			Employee employee = (Employee) request.getSession().getAttribute("employee");
 			id = employee.getEmployeeId();
-			if(request.getParameter("id") != null) {
+			if (request.getParameter("id") != null) {
 				id = Integer.parseInt(request.getParameter("id"));
 				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
@@ -52,7 +52,7 @@ public class ViewEmployeeController extends HttpServlet {
 				request.setAttribute("departments", departments);
 				request.setAttribute("employees", employees);
 				request.getRequestDispatcher("views/main/view-employee.jsp").forward(request, response);
-			}else {
+			} else {
 
 				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
@@ -73,7 +73,6 @@ public class ViewEmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-
 			int employeeId = Integer.parseInt(request.getParameter("id"));
 			String employeeName = request.getParameter("fullname");
 			String employeePhone = request.getParameter("phonenumber");
@@ -97,16 +96,7 @@ public class ViewEmployeeController extends HttpServlet {
 			emp.setPassword(password);
 			emp.setDepartmentId(departmentId);
 
-			if (employeeService.checkAccount(emp) == false) {
-				boolean checkAcc = false;
-				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
-				List<Department> departments = departmentDAOImpl.getAllDepartment();
-
-				request.setAttribute("departments", departments);
-				request.setAttribute("employees", employees);
-				request.setAttribute("checkAccount", checkAcc);
-				request.getRequestDispatcher("views/main/view-employee.jsp").forward(request, response);
-			} else if (employeeService.checkEmail(emp) == false) {
+			if (employeeService.checkEmail(employeeEmail) == false) {
 				boolean checkEmail = false;
 				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
@@ -115,15 +105,24 @@ public class ViewEmployeeController extends HttpServlet {
 				request.setAttribute("employees", employees);
 				request.setAttribute("checkEmail", checkEmail);
 				request.getRequestDispatcher("views/main/view-employee.jsp").forward(request, response);
+			} else if (employeeService.checkAccount(account) == false) {
+				boolean checkAcc = false;
+				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
+				List<Department> departments = departmentDAOImpl.getAllDepartment();
+
+				request.setAttribute("departments", departments);
+				request.setAttribute("employees", employees);
+				request.setAttribute("checkAccount", checkAcc);
+				request.getRequestDispatcher("views/main/view-employee.jsp").forward(request, response);
 			} else if (employeeDAOImpl.updateEmployee(emp) == false) {
 				List<Employee> employees = employeeDAOImpl.getAllEmployeesById(id);
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
 
 				request.setAttribute("departments", departments);
 				request.setAttribute("employees", employees);
+				boolean check = true;
+				request.setAttribute("check", check);
 				request.getRequestDispatcher("views/main/view-employee.jsp").forward(request, response);
-			} else {
-
 			}
 
 		} catch (Exception e) {

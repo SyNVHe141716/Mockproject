@@ -6,10 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking office manager</title>
-<link rel="stylesheet"
-	href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/header.css">
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style-main.css">
+<link rel="stylesheet" href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />">
+<link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/style-main.css' />">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>

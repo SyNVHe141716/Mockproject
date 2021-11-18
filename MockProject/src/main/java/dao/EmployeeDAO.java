@@ -19,6 +19,8 @@ public interface EmployeeDAO {
 	public boolean addEmployee(Employee employee) throws SQLException;
 
 	public List<Employee> getAllEmployees() throws SQLException;
+	
+	public List<Employee> getAllEmployeesByRole(Employee employee) throws SQLException;
 
 	public List<Employee> getAllEmployeesById(int id) throws SQLException;
 

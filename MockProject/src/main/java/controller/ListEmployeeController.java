@@ -36,7 +36,8 @@ public class ListEmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Employee> employees = employeeDAOImpl.getAllEmployees();
+			Employee employee = (Employee) request.getSession().getAttribute("employee");
+			List<Employee> employees = employeeDAOImpl.getAllEmployeesByRole(employee);
 			List<Department> departments = departmentDAOImpl.getAllDepartment();
 
 			request.setAttribute("departments", departments);

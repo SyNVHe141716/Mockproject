@@ -74,14 +74,14 @@ public class AddEmployeeController extends HttpServlet {
 			emp.setPassword(password);
 			emp.setDepartmentId(departmentId);
 			
-			if (employeeService.checkAccount(emp) == false) {
+			if (employeeService.checkAccount(account) == false) {
 				boolean checkAcc = false;
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
 
 				request.setAttribute("departments", departments);
 				request.setAttribute("checkAccount", checkAcc);
 				request.getRequestDispatcher("views/main/add-employee.jsp").forward(request, response);
-			} else if (employeeService.checkEmail(emp) == false) {
+			} else if (employeeService.checkEmail(employeeEmail) == false) {
 				boolean checkEmail = false;
 				
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
@@ -92,6 +92,8 @@ public class AddEmployeeController extends HttpServlet {
 			} else if (employeeDAOImpl.addEmployee(emp) == false) {
 				List<Department> departments = departmentDAOImpl.getAllDepartment();
 
+				boolean check = true;
+				request.setAttribute("check", check);
 				request.setAttribute("departments", departments);
 				request.getRequestDispatcher("views/main/add-employee.jsp").forward(request, response);
 			} else {

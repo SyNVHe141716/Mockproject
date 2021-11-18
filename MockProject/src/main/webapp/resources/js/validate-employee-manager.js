@@ -47,7 +47,7 @@ function clickDetele(){
     var check = confirm('Are you sure want to delete?');
     var id = document.getElementById('id').value;
     if(check){
-        window.location.href = 'DeleteEmployeeController?id'+id;
+        window.location.href = 'DeleteEmployeeController?id='+id;
     }
 }
 

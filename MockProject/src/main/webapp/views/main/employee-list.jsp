@@ -6,10 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath}/resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/header.css">
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style-main.css">
+<link
+	href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />"
+	rel="stylesheet">
+<link href="<c:url value='/resources/css/header.css' />"
+	rel="stylesheet">
+<link href="<c:url value='/resources/css/style-main.css' />"
+	rel="stylesheet">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -83,12 +86,12 @@
 	</div>
 
 
-	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="${pageContext.servletContext.contextPath}/resources/js/search-employee.js"></script>
+	<script src="<c:url value='/resources/bootstrap/js/bootstrap.min.js' />"></script>
+	<script src="<c:url value='/resources/js/search-employee.js' />"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="${pageContext.servletContext.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<c:url value='/resources/bootstrap/js/bootstrap.min.js'/>"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

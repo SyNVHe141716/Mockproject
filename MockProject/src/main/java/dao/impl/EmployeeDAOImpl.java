@@ -84,7 +84,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public List<Employee> getAllEmployees() throws SQLException {
-		// TODO Auto-generated method stub
 		List<Employee> employees = new ArrayList<Employee>();
 		Employee employee = null;
 		try {
@@ -252,6 +251,45 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			}
 		}
 		return status;
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployeesByRole(Employee empl) throws SQLException {
+		List<Employee> employees = new ArrayList<Employee>();
+		Employee employee = null;
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_ALL_EMPLOYEES_BY_ROLE);
+			pre.setBoolean(1, empl.getRole());
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				employee = new Employee();
+				employee.setEmployeeId(rs.getInt("employeeId"));
+				employee.setAccount(rs.getString("account"));
+				employee.setDepartmentId(rs.getInt("departmentId"));
+				employee.setEmployeeAddress(rs.getString("employeeAddress"));
+				employee.setEmployeeBirthdate(rs.getString("employeeBirthdate"));
+				employee.setEmployeeEmail(rs.getString("employeeEmail"));
+				employee.setEmployeeName(rs.getString("employeeName"));
+				employee.setEmployeePhone(rs.getString("employeePhone"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getBoolean("role"));
+				employee.setSex(rs.getBoolean("sex"));
+				employees.add(employee);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return employees;
 	}
 	
 }

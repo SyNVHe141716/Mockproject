@@ -8,6 +8,8 @@ public class SQLCommand {
 	public final static String GET_EMPLOYEE = "SELECT [employeeId], [account], [password] FROM [dbo].[employee] WHERE account = ? AND password = ?";
 
 	public final static String GET_ALL_EMPLOYEES = "SELECT * FROM [dbo].[employee]";
+	
+	public final static String GET_ALL_EMPLOYEES_BY_ROLE = "SELECT * FROM [dbo].[employee] WHERE role = ?";
 
 	public final static String GET_ALL_EMPLOYEES_BY_ACCOUNT = "SELECT * FROM [dbo].[employee] WHERE account = ? ";
 
