@@ -48,6 +48,8 @@ public class ParkingLotAddController extends HttpServlet {
 			mess = "Fail on SQL when get parking places";
 			request.setAttribute("mess", mess);
 		}
+		boolean activeParkingLotAdd = true;
+		request.setAttribute("activeParkingLotAdd", activeParkingLotAdd);
 		request.getRequestDispatcher("views/main/add-parking-lot.jsp").forward(request, response);
 	}
 
@@ -80,7 +82,8 @@ public class ParkingLotAddController extends HttpServlet {
 			} else {
 				mess = "Parking Slot name \"" + name + "\" was existed!";
 			}
-
+			boolean activeParkingLotAdd = true;
+			request.setAttribute("activeParkingLotAdd", activeParkingLotAdd);
 		} catch (Exception e) {
 			mess = "Add Parking Lot Fail in SQL!";
 			e.printStackTrace();

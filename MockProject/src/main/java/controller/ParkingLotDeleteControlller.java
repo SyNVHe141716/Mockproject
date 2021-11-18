@@ -50,6 +50,8 @@ public class ParkingLotDeleteControlller extends HttpServlet {
 			}
 			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
 			request.setAttribute("parkingLots", parkingLots);
+			boolean activeParkingLotList = true;
+			request.setAttribute("activeParkingLotList", activeParkingLotList);
 		} catch (Exception e) {
 			mess = "Delete fail in SQL!";
 			e.printStackTrace();

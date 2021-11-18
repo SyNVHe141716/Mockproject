@@ -35,14 +35,15 @@
 							class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="bookingOfficeList" href="<%=request.getContextPath() %>/booking"
+					<a id="bookingOfficeList"
+						href="<%=request.getContextPath()%>/booking"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Booking office list</a>
-					<a id="addBookingOffice" href="<%=request.getContextPath() %>/add"
+					<a id="addBookingOffice" href="<%=request.getContextPath()%>/add"
 						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
 						Booking office</a>
 				</details></li>
-			<li class="p-3 border-bottom"><details>
+			<li class="p-3 border-bottom"><details id="parkingLotMenu">
 					<summary style="list-style: none; color: #007bff;">
 						<i class="fas fa-map-marker-alt mr-2"></i>Parking lot manager<i
 							class="fas fa-chevron-down float-right"
@@ -79,45 +80,52 @@
 					<a id="ticketList" href="ticket-list.jsp"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Ticket list</a>
-					<a id="addTicket" href="add-ticket.jsp"
-						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
-						ticket</a>
+					<a id="addTicket" href="add-ticket.jsp" class="d-block ml-1 p-3"><i
+						class="fas fa-plus mr-2"></i>Add ticket</a>
 				</details></li>
 		</ul>
 	</div>
 
 	<script>
-	var pathName = window.location.pathname;
-	if(pathName.includes('add-booking-office.jsp')){
-		document.getElementById('addBookingOffice').classList.add("active");
-	}
-	else if(pathName.includes('booking-office-list.jsp')){
-		document.getElementById('bookingOfficeList').classList.add("active");
-	}
-	else if(pathName.includes('add-parking-lot')){
-		document.getElementById('addParkingLot').classList.add("active");
-	}
-	else if(pathName.includes('parking-lot-list')){
-		document.getElementById('parkingLotList').classList.add("active");
-	}
-	else if(pathName.includes('car-list.jsp')){
-		document.getElementById('carList').classList.add("active");
-	}
-	else if(pathName.includes('add-car.jsp') || pathName.includes('edit-delete-car.jsp')){
-		document.getElementById('addCar').classList.add("active");
-	}
-	else if(pathName.includes('add-trip.jsp')){
-		document.getElementById('addTrip').classList.add("active");
-	}
-	else if(pathName.includes('trip-list.jsp')){
-		document.getElementById('tripList').classList.add("active");
-	}
-	else if(pathName.includes('add-ticket.jsp')){
-		document.getElementById('addTicket').classList.add("active");
-	}
-	else if(pathName.includes('ticket-list.jsp')){
-		document.getElementById('ticketList').classList.add("active");
-	}
+		var pathName = window.location.pathname;
+		if (pathName.includes('add-booking-office.jsp')) {
+			document.getElementById('addBookingOffice').classList.add("active");
+		} else if (pathName.includes('booking-office-list.jsp')) {
+			document.getElementById('bookingOfficeList').classList
+					.add("active");
+		} else if (pathName.includes('add-parking-lot')) {
+			document.getElementById('addParkingLot').classList.add("active");
+		} else if (pathName.includes('parking-lot-list')) {
+			document.getElementById('parkingLotList').classList.add("active");
+		} else if (pathName.includes('car-list.jsp')) {
+			document.getElementById('carList').classList.add("active");
+		} else if (pathName.includes('add-car.jsp')
+				|| pathName.includes('edit-delete-car.jsp')) {
+			document.getElementById('addCar').classList.add("active");
+		} else if (pathName.includes('add-trip.jsp')) {
+			document.getElementById('addTrip').classList.add("active");
+		} else if (pathName.includes('trip-list.jsp')) {
+			document.getElementById('tripList').classList.add("active");
+		} else if (pathName.includes('add-ticket.jsp')) {
+			document.getElementById('addTicket').classList.add("active");
+		} else if (pathName.includes('ticket-list.jsp')) {
+			document.getElementById('ticketList').classList.add("active");
+		}
 	</script>
+
+	<c:if test="${activeParkingLotList == true }">
+		<script type="text/javascript">
+			document.getElementById('parkingLotMenu').setAttribute("open",
+					"true");
+			document.getElementById('parkingLotList').classList.add("active");
+		</script>
+	</c:if>
+	<c:if test="${activeParkingLotAdd == true }">
+		<script type="text/javascript">
+			document.getElementById('parkingLotMenu').setAttribute("open",
+					"true");
+			document.getElementById('addParkingLot').classList.add("active");
+		</script>
+	</c:if>
 </body>
 </html>

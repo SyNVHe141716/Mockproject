@@ -44,11 +44,15 @@ public class ParkingLotListController extends HttpServlet {
 			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
 			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
+			
 			request.setAttribute("parkingPlaces", parkingPlaces);
 			request.setAttribute("parkingLots", parkingLots);
+			boolean activeParkingLotList = true;
+			request.setAttribute("activeParkingLotList", activeParkingLotList);
 			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 		}
 	}
 
@@ -58,6 +62,8 @@ public class ParkingLotListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//		boolean activeParkingLotList = true;
+//		request.setAttribute("activeParkingLotList", activeParkingLotList);
 		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 
