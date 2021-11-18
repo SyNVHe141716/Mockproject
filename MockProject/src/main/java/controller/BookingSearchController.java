@@ -65,6 +65,7 @@ public class BookingSearchController extends HttpServlet {
 			request.setAttribute("count", count);
 			request.setAttribute("tag", index);
 			request.setAttribute("txt", txt);
+			request.setAttribute("category", category);
 			List<BookingOffice> list = bk.getSearchBookingName(txt, index);
 				if(list.isEmpty()) {
 					request.setAttribute("mess", "Can not find :" +txt);
@@ -108,6 +109,7 @@ public class BookingSearchController extends HttpServlet {
 			request.setAttribute("count", count);
 			request.setAttribute("tag", index);
 			request.setAttribute("id", id);
+			request.setAttribute("category", category);
 			List<BookingOffice> listT = bk.getSearchTrip(id, index);
 			if(listT.isEmpty()) {
 				request.setAttribute("mess", "Can not find");
@@ -123,7 +125,7 @@ public class BookingSearchController extends HttpServlet {
 			e.printStackTrace();
 			}
 		}
-			
+	
 		
 	}
 

@@ -34,6 +34,9 @@ public class BookingOffice implements Serializable{
 		super();
 		this.officeId = officeId;
 	}
+	
+
+	
 
 	public BookingOffice(int stt, int officeId, String officeName, String officePhone, String officePlace,
 			int officePrice, Date startContractDeadline, Date endContractDeadline, String destination, int tripid) {

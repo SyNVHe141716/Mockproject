@@ -28,14 +28,14 @@
 					class="box-search border-custom p-1 mr-2 pr-5" id="selectTrip"
 					name="selectTrip" style="display: none;">
 					<c:forEach items="${ lsTrip}" var="o">
-							<option ${tripid == o.tripId ? "selected":"" } value="${o. tripId}" name="abc" >${o.destination }</option>
+							<option ${id == o.tripId ? "selected":"" } value="${o. tripId}" name="abc" >${o.destination }</option>
 					</c:forEach>
 				</select> <i class="fas fa-filter bg-custom border border-icon-search p-2">
 					<p class="d-inline font-weight-normal">Filter by</p>
 				</i> <select onchange="changeCategory()" name="category" id="category"
 					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
-					<option value="bookingOffice">Bookingoffice</option>
-					<option value="trip">Trip</option>
+					<option value="bookingOffice"${category == "bookingOffice"?"selected":""}>Bookingoffice</option>
+					<option value="trip" ${category == "trip"?"selected":""}>Trip</option>
 				</select>
 				<div onclick="searchBookingOffice()"
 					class="btn btn-info p-1 pl-2 pr-2">Search</div>
@@ -101,5 +101,18 @@
          }
 
       </script>
+      <c:if test="${category == 'bookingOffice'}">
+		<script type="text/javascript">
+		document.getElementById('input-search').style.display = 'block';
+		document.getElementById('selectTrip').style.display = 'none';
+		</script>
+	</c:if>
+	<c:if test="${category == 'trip'}">
+		<script type="text/javascript">
+		document.getElementById('selectTrip').style.display = 'block';
+		document.getElementById('selectTrip').style.display = 'block';
+		document.getElementById('input-search').style.display = 'none';
+		</script>
+	</c:if>
 </body>
 </html>
