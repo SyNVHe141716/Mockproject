@@ -77,7 +77,7 @@ function checkFullName() {
 		return false;
 	}
 	for (var i = 0; i < test.length; i++) {
-		if (test.charCodeAt(i) < 65 || (test.charCodeAt(i) > 90 && test.charCodeAt(i) < 97) || test.charCodeAt(i) > 122) {
+		if (test.charCodeAt(i) != 32 && (test.charCodeAt(i) < 65 || (test.charCodeAt(i) > 90 && test.charCodeAt(i) < 97) || test.charCodeAt(i) > 122)) {
 			return false;
 		}
 	}

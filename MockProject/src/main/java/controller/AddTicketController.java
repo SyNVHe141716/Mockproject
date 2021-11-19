@@ -44,7 +44,7 @@ public class AddTicketController extends HttpServlet {
 			request.setAttribute("car", listCar);
 			request.getRequestDispatcher("views/main/add-ticket.jsp").forward(request, response);
 		} catch (Exception e) {
-			// TODO: handle exception
+			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}
 	}
 
@@ -63,7 +63,7 @@ public class AddTicketController extends HttpServlet {
 				doGet(request, response);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}
 	}
 
