@@ -5,7 +5,7 @@ public class SQLCommand {
 	/*
 	 * SQL Command Employee Author: ThienNT11 Create Date: 09/11/2021
 	 */
-	public final static String GET_EMPLOYEE = "SELECT [employeeId], [account], [password] FROM [dbo].[employee] WHERE account = ? AND password = ?";
+	public final static String GET_EMPLOYEE = "SELECT [employeeId], [account], [password], [role] FROM [dbo].[employee] WHERE account = ? AND password = ?";
 
 	public final static String GET_ALL_EMPLOYEES = "SELECT * FROM [dbo].[employee]";
 	

@@ -33,6 +33,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 				emp.setEmployeeId(rs.getInt("employeeId"));
 				emp.setAccount(rs.getString("account"));
 				emp.setPassword(rs.getString("password"));
+				emp.setRole(rs.getBoolean("role"));
 			}
 		} finally {
 			if (rs != null) {
