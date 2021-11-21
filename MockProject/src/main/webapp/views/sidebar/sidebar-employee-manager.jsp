@@ -15,7 +15,7 @@
             <ul class="list-unstyled">
                 <li class="border-bottom p-3"><a href="#"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
                 <li class="p-3">
-                    <details>
+                    <details open>
                         <summary style="list-style: none; color: #007bff;"><i class="fas fa-chart-bar mr-2"></i>Employee
                             manager<i class="fas fa-chevron-down float-right" style="line-height: 24px;"></i></summary>
                         <a id="EmployeeList" href="ListEmployeeController" class="d-block ml-1 border-bottom p-3"><i

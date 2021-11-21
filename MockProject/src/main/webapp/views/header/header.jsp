@@ -50,7 +50,7 @@
 			document.getElementById("icon-nav").style.transform = 'rotate(-45deg)';
 			document.getElementById("nav-title").innerHTML = 'Trip';
 		}
-		else if(pathName.includes('add-ticket.jsp') || pathName.includes('ticket-list.jsp') || pathName.includes('edit-ticket.jsp')){
+		else if(pathName.includes('AddTicketController') || pathName.includes('TicketListController') || pathName.includes('EditTicketController')){
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-ticket-alt");
 			document.getElementById("icon-nav").style.transform = 'rotate(-45deg)';

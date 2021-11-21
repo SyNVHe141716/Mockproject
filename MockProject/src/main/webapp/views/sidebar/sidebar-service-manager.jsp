@@ -14,9 +14,7 @@
 <body>
 	<div class="float-left sidebar vh-100 border-right bg-light">
 		<ul class="list-unstyled">
-			<li class="border-bottom p-3"><a href="#"><i
-					class="fas fa-tachometer-alt mr-2"></i>Car park manager</a></li>
-			<li class="p-3 border-bottom"><details>
+			<li class="p-3 border-bottom"><details id="car">
 					<summary style="list-style: none; color: #007bff;">
 						<i class="fas fa-car mr-2"></i>Car manager<i
 							class="fas fa-chevron-down float-right"
@@ -28,7 +26,7 @@
 					<a id="addCar" href="add-car.jsp" class="d-block ml-1 p-3"><i
 						class="fas fa-plus mr-2"></i>Add Car</a>
 				</details></li>
-			<li class="p-3 border-bottom"><details>
+			<li class="p-3 border-bottom"><details id="bookingOffice">
 					<summary style="list-style: none; color: #007bff;">
 						<i class="fas fa-cart-plus mr-2"></i>Booking office manager<i
 							class="fas fa-chevron-down float-right"
@@ -57,7 +55,7 @@
 						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
 						Parking lot</a>
 				</details></li>
-			<li class="p-3 border-bottom"><details>
+			<li class="p-3 border-bottom"><details id="trip">
 					<summary style="list-style: none; color: #007bff;">
 						<i class="fas fa-plane mr-2" style="transform: rotate(-45deg);"></i>Trip
 						manager<i class="fas fa-chevron-down float-right"
@@ -69,17 +67,17 @@
 					<a id="addTrip" href="add-trip.jsp" class="d-block ml-1 p-3"><i
 						class="fas fa-plus mr-2"></i>Add trip</a>
 				</details></li>
-			<li class="p-3 border-bottom"><details>
+			<li class="p-3 border-bottom"><details id="ticket">
 					<summary style="list-style: none; color: #007bff;">
 						<i class="fas fa-ticket-alt mr-2"
 							style="transform: rotate(-45deg);"></i>Ticket manager<i
 							class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="ticketList" href="ticket-list.jsp"
+					<a id="ticketList" href="TicketListController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Ticket list</a>
-					<a id="addTicket" href="add-ticket.jsp" class="d-block ml-1 p-3"><i
+					<a id="addTicket" href="AddTicketController" class="d-block ml-1 p-3"><i
 						class="fas fa-plus mr-2"></i>Add ticket</a>
 				</details></li>
 		</ul>
@@ -89,26 +87,35 @@
 		var pathName = window.location.pathname;
 		if (pathName.includes('add-booking-office.jsp')) {
 			document.getElementById('addBookingOffice').classList.add("active");
+			document.getElementById('bookingOffice').open = true;
 		} else if (pathName.includes('booking-office-list.jsp')) {
 			document.getElementById('bookingOfficeList').classList
 					.add("active");
+			document.getElementById('bookingOffice').open = true;
 		} else if (pathName.includes('add-parking-lot')) {
 			document.getElementById('addParkingLot').classList.add("active");
+			document.getElementById('parkingLotMenu').open = true;
 		} else if (pathName.includes('parking-lot-list')) {
 			document.getElementById('parkingLotList').classList.add("active");
+			document.getElementById('parkingLotMenu').open = true;
 		} else if (pathName.includes('car-list.jsp')) {
 			document.getElementById('carList').classList.add("active");
-		} else if (pathName.includes('add-car.jsp')
-				|| pathName.includes('edit-delete-car.jsp')) {
+			document.getElementById('car').open = true;
+		} else if (pathName.includes('add-car.jsp')) {
 			document.getElementById('addCar').classList.add("active");
+			document.getElementById('car').open = true;
 		} else if (pathName.includes('add-trip.jsp')) {
 			document.getElementById('addTrip').classList.add("active");
+			document.getElementById('trip').open = true;
 		} else if (pathName.includes('trip-list.jsp')) {
 			document.getElementById('tripList').classList.add("active");
-		} else if (pathName.includes('add-ticket.jsp')) {
+			document.getElementById('trip').open = true;
+		} else if (pathName.includes('AddTicketController')) {
 			document.getElementById('addTicket').classList.add("active");
-		} else if (pathName.includes('ticket-list.jsp')) {
+			document.getElementById('ticket').open = true;
+		} else if (pathName.includes('TicketListController')) {
 			document.getElementById('ticketList').classList.add("active");
+			document.getElementById('ticket').open = true;
 		}
 	</script>
 

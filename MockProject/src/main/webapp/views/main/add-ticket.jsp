@@ -57,6 +57,9 @@
 				</tr>
 
 			</table>
+			
+			<c:if test="${add eq 'true'}"><label class="ml-4" style="color: red">Add Success</label></c:if>
+			
 			<div class="d-flex list-btn">
 				<div onclick="window.history.back();"
 					class="btn btn-info mr-1 text-btn">

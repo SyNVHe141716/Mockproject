@@ -80,13 +80,17 @@ public class SQLCommand {
 	public static final String Count_TripID = "SELECT COUNT(*)\r\n"
 			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n" + "where b.tripId =?";
 
+	/**
+	 * SQL Command Ticket Author: QuyNX4
+	 */
 	public static final String INSERT_TICKET = "INSERT INTO [dbo].[ticket] ([bookingTime],[bookingDate],[customerName],[licensePlate],[tripId]) VALUES (?,GETDATE(),?,?,?)";
-	
 	public static final String SEARCH_TICKET = "select ticket.*, trip.destination from ticket join trip on ticket.tripId = trip.tripId ";
-	
-	public static final String GET_TRIP_FOR_TICKET = "select tripid, destination from trip where bookedTicketNumber < maximumOnlineTicketNumber";
-	
+	public static final String GET_TRIP_FOR_TICKET = "select tripid, destination from trip where bookedTicketNumber < maximumOnlineTicketNumber and departtureDate > getdate()";
 	public static final String GET_CAR_FOR_TICKET = "select * from car where licensePlate not in (select licensePlate from ticket)";
-	
 	public static final String UPDATE_BOOKED_NUMBER = "update trip set bookedTicketNumber = bookedTicketNumber + 1 where tripId = ?";
+	public static final String UPDATE_TICKET = "UPDATE [dbo].[ticket] SET [bookingTime] = ?, [customerName] = ?, [licensePlate] = ?, [tripId] = ? WHERE ticketId = ?";
+	public static final String GET_TICKET_BY_ID = "select * from ticket where ticketId = ?";
+	public static final String GET_TRIP_FOR_UPDATE_TICKET = "select * from trip where bookedTicketNumber < maximumOnlineTicketNumber or  tripId = (select tripId from ticket where ticketId = ?)";
+	public static final String GET_CAR_FOR_UPDATE_TICKET = "select * from car where licensePlate not in (select licensePlate from ticket) or licensePlate = (select licensePlate from ticket where ticketId = ?)";
+	public static final String DELETE_TICKET = "DELETE FROM [dbo].[ticket] WHERE ticketId = ?";
 }

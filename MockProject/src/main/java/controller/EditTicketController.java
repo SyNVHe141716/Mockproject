@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,19 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import dao.TicketDAO;
 import dao.impl.TicketDAOImpl;
 import entities.Car;
+import entities.Ticket;
 import entities.Trip;
 
 /**
- * Servlet implementation class AddTicketController
+ * Servlet implementation class EditTicketController
  */
-@WebServlet("/AddTicketController")
-public class AddTicketController extends HttpServlet {
+@WebServlet("/EditTicketController")
+public class EditTicketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddTicketController() {
+    public EditTicketController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +34,22 @@ public class AddTicketController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
-			String add = request.getParameter("add");
+			String ticketId = request.getParameter("id");
+			String edit = request.getParameter("edit");
 			TicketDAO ticketDAO = new TicketDAOImpl();
-			List<Trip> listTrip = ticketDAO.getTrip();
-			List<Car> listCar = ticketDAO.getCar();
-			
+			Ticket t = ticketDAO.getTicketById(Integer.parseInt(ticketId));
+			List<Trip> listTrip = ticketDAO.getTripForUpdate(Integer.parseInt(ticketId));
+			List<Car> listCar = ticketDAO.getCarForUpdate(Integer.parseInt(ticketId));
+			request.setAttribute("ticket", t);
 			request.setAttribute("trip", listTrip);
 			request.setAttribute("car", listCar);
-			request.setAttribute("add", add);
-			
-			request.getRequestDispatcher("views/main/add-ticket.jsp").forward(request, response);
+			request.setAttribute("edit", edit);
+			request.getRequestDispatcher("views/main/edit-ticket.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}
+		
 	}
 
 	/**
@@ -56,15 +57,20 @@ public class AddTicketController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String customerName = request.getParameter("customer-name");
-			LocalTime bookingTime = LocalTime.parse(request.getParameter("booking-time"));
-			int tripId = Integer.parseInt(request.getParameter("trip"));
-			String licensePlate = request.getParameter("license-plate");
 			TicketDAO ticketDAO = new TicketDAOImpl();
-			if(ticketDAO.addTicket(customerName, bookingTime, tripId, licensePlate)) {
-				ticketDAO.updateBookedNumber(tripId);
-				response.sendRedirect("AddTicketController?add=true");
+			int ticketId = Integer.parseInt(request.getParameter("ticketId"));
+			String customerName = request.getParameter("customerName");
+			String bookingTime = request.getParameter("bookingTime");
+			int trip = Integer.parseInt(request.getParameter("tripId"));
+			String licensePlate = request.getParameter("licensePlate");
+			
+			if(ticketDAO.updateBookedNumberDown(ticketId)) {
+				if(ticketDAO.editTicket(ticketId, customerName, bookingTime, trip, licensePlate)) {
+					ticketDAO.updateBookedNumberUp(ticketId);
+				}
 			}
+			
+			response.sendRedirect("EditTicketController?id=" + ticketId + "&edit=true");
 		} catch (Exception e) {
 			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}

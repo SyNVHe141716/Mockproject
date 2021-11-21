@@ -1,8 +1,7 @@
-selectDate();
 changeCategory();
 function changeCategory() {
 	var category = document.getElementById('category').value;
-	if (category == 'trip') {
+	if (category == 'tripId') {
 		document.getElementById('trip-search').style.display = 'block';
 		document.getElementById('input-search').style.display = 'none';
 		document.getElementById('license-plate-search').style.display = 'none';
@@ -10,7 +9,7 @@ function changeCategory() {
 		document.getElementById('text-to').style.display = 'none';
 		document.getElementById('to').style.display = 'none';
 	}
-	else if (category == 'license-plate') {
+	else if (category == 'licensePlate') {
 		document.getElementById('license-plate-search').style.display = 'block';
 		document.getElementById('input-search').style.display = 'none';
 		document.getElementById('trip-search').style.display = 'none';
@@ -18,7 +17,7 @@ function changeCategory() {
 		document.getElementById('text-to').style.display = 'none';
 		document.getElementById('to').style.display = 'none';
 	}
-	else if (category == 'customer') {
+	else if (category == 'customerName') {
 		document.getElementById('input-search').style.display = 'block';
 		document.getElementById('license-plate-search').style.display = 'none';
 		document.getElementById('trip-search').style.display = 'none';
@@ -52,10 +51,17 @@ function selectDate() {
 			max = 28;
 		}
 	}
+	var l = day.options.length - 1;
+	for (var i = l; i >= 0; i--) {
+		day.remove(i);
+	}
 	for (var i = 1; i <= max; i++) {
 		var opt = document.createElement('option');
 		opt.value = i;
 		opt.innerHTML = i;
+		if (day > max) {
+			opt.selected = 'selected';
+		}
 		day.appendChild(opt);
 	}
 }

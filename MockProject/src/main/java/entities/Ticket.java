@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Time;
 
 public class Ticket implements Serializable {
@@ -10,16 +11,17 @@ public class Ticket implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int ticketId;
 	private Time bookingTime;
+	private Date bookingDate;
 	private String customerName;
 	private String licensePlate;
-	private String tripId;
+	private int tripId;
 	private String tripName;
 	
 	public Ticket() {
 		super();
 	}
 
-	public Ticket(int ticketId, Time bookingTime, String customerName, String licensePlate, String tripId,
+	public Ticket(int ticketId, Time bookingTime, String customerName, String licensePlate, int tripId,
 			String tripName) {
 		super();
 		this.ticketId = ticketId;
@@ -28,6 +30,14 @@ public class Ticket implements Serializable {
 		this.licensePlate = licensePlate;
 		this.tripId = tripId;
 		this.tripName = tripName;
+	}
+
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 	public int getTicketId() {
@@ -62,11 +72,11 @@ public class Ticket implements Serializable {
 		this.licensePlate = licensePlate;
 	}
 
-	public String getTripId() {
+	public int getTripId() {
 		return tripId;
 	}
 
-	public void setTripId(String tripId) {
+	public void setTripId(int tripId) {
 		this.tripId = tripId;
 	}
 

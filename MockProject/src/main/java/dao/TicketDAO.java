@@ -1,9 +1,7 @@
 package dao;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import entities.Car;
@@ -17,13 +15,29 @@ public interface TicketDAO {
 	List<Car> getCar() throws Exception;
 	
 	boolean addTicket(String customerName, LocalTime bookingTime, int idTrip, String licensePlate) throws Exception;
+	
+	List<Trip> getAllTrip() throws Exception;
+	
+	List<Car> getAllCar() throws Exception;
 
-	List<Ticket> getTicket(String category, String input, String bookingDate) throws Exception;
+	int getMaxYear() throws Exception;
+	
+	List<Ticket> getTicket(String category, String customerName, String from, String to, String tripId, String licensePlate, String bookingDate) throws Exception;
 
 	boolean deleteTicket(int idTicket) throws Exception;
+	
+	Ticket getTicketById(int ticketId) throws Exception;
 
-	boolean editTicket(int idTicket, String customerName, Time bookingTime, int idTrip, String licensePlate)
+	boolean editTicket(int ticketId, String customerName, String bookingTime, int tripId, String licensePlate)
 			throws Exception;
 	
+	List<Trip> getTripForUpdate(int ticketId) throws Exception;
+	
+	List<Car> getCarForUpdate(int ticketId) throws Exception;
+	
 	boolean updateBookedNumber(int tripId)  throws Exception;
+	
+	boolean updateBookedNumberDown(int ticketId)  throws Exception;
+	
+	boolean updateBookedNumberUp(int ticketId)  throws Exception;
 }
