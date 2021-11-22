@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.EmployeeDAO;
+import entities.Department;
 import entities.Employee;
 import utils.DBConnection;
 import utils.SQLCommand;
@@ -277,6 +278,49 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 				employee.setPassword(rs.getString("password"));
 				employee.setRole(rs.getBoolean("role"));
 				employee.setSex(rs.getBoolean("sex"));
+				employees.add(employee);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return employees;
+	}
+
+
+	@Override
+	public List<Employee> getAllEmployeeDepartmentByRole(Employee emp) throws SQLException {
+		List<Employee> employees = new ArrayList<Employee>();
+		Employee employee = null;
+		Department department = null;
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_ALL_EMPLOYEES_DEPARTMENT_BY_ROLE);
+			pre.setBoolean(1, emp.getRole());
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				employee = new Employee();
+				department = new Department();
+				employee.setEmployeeId(rs.getInt("employeeId"));
+				employee.setAccount(rs.getString("account"));
+				employee.setDepartmentId(rs.getInt("departmentId"));
+				employee.setEmployeeAddress(rs.getString("employeeAddress"));
+				employee.setEmployeeBirthdate(rs.getString("employeeBirthdate"));
+				employee.setEmployeeEmail(rs.getString("employeeEmail"));
+				employee.setEmployeeName(rs.getString("employeeName"));
+				employee.setEmployeePhone(rs.getString("employeePhone"));
+				employee.setPassword(rs.getString("password"));
+				employee.setRole(rs.getBoolean("role"));
+				employee.setSex(rs.getBoolean("sex"));
+				department.setDepartmentName(rs.getString("deptName"));
+				employee.setDepartment(department);
 				employees.add(employee);
 			}
 		} finally {

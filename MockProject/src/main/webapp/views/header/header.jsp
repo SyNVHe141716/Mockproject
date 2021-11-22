@@ -17,7 +17,7 @@
 			<label id="nav-title" style="font-family: sans-serif; font-weight: normal; margin: 0px; margin-left: 5px;"></label>
 		</div>
 		<div>
-			<label style="color: #007bff;" class="mr-4">Welcome test</label> 
+			<label style="color: #007bff;" class="mr-4">Welcome ${acc.getAccount() }</label> 
 			<a href="LogOutController"> <i class="fas fa-sign-out-alt"></i>Logout</a>
 		</div>
 	</header>

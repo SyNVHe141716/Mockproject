@@ -19,7 +19,8 @@ public class Employee implements Serializable {
 	//field sex be edited by ThienNT11 (09/11/2021)
 	private boolean sex;
 	private Boolean role;
-
+	private Department department;
+	
 	public Employee() {
 		super();
 	}
@@ -54,6 +55,16 @@ public class Employee implements Serializable {
 		this.password = password;
 		this.sex = sex;
 		this.role = role;
+	}
+	
+	
+	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public int getEmployeeId() {
