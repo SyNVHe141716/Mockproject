@@ -52,4 +52,96 @@ public class EmployeeService {
 		}
 		return true;
 	}
+	
+	public List<Employee> searchEmployeeByName(String name){
+		List<Employee> listOfEmployees = new ArrayList<Employee>();
+		try {
+			Employee employee = new Employee();
+			employee.setRole(true);
+			
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			for (Employee emp : employees) {
+				if(emp.getEmployeeName().toLowerCase().contains(name.toLowerCase())) {
+					listOfEmployees.add(emp);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listOfEmployees;
+	}
+	
+	public List<Employee> searchEmployeeByDateOfBirth(String dateOfBirth){
+		try {
+			Employee employee = new Employee();
+			employee.setRole(true);
+			List<Employee> listOfEmployees = new ArrayList<Employee>();
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			for (Employee emp : employees) {
+				if(emp.getEmployeeBirthdate().contains(dateOfBirth)) {
+					listOfEmployees.add(emp);
+				}
+			}
+			return listOfEmployees;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Employee> searchEmployeeByAddress(String address){
+		try {
+			Employee employee = new Employee();
+			employee.setRole(true);
+			List<Employee> listOfEmployees = new ArrayList<Employee>();
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			for (Employee emp : employees) {
+				if(emp.getEmployeeAddress().toLowerCase().contains(address.toLowerCase())) {
+					listOfEmployees.add(emp);
+				}
+			}
+			return listOfEmployees;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Employee> searchEmployeeByPhoneNumber(String phonenumber){
+		try {
+			Employee employee = new Employee();
+			employee.setRole(true);
+			List<Employee> listOfEmployees = new ArrayList<Employee>();
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			for (Employee emp : employees) {
+				if(emp.getEmployeePhone().contains(phonenumber)) {
+					listOfEmployees.add(emp);
+				}
+			}
+			return listOfEmployees;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Employee> searchEmployeeByDepartment(int departmentId){
+		try {
+			Employee employee = new Employee();
+			employee.setRole(true);
+			List<Employee> listOfEmployees = new ArrayList<Employee>();
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			
+			for (Employee emp : employees) {
+				if(emp.getDepartmentId() == departmentId) {
+					listOfEmployees.add(emp);
+				}
+			}
+			return listOfEmployees;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

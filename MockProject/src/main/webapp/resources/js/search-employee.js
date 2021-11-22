@@ -37,4 +37,5 @@ function checkPhoneNumber(){
 			return false;
 		}
     }
+	return true;
 }

@@ -10,6 +10,8 @@ public class SQLCommand {
 	public final static String GET_ALL_EMPLOYEES = "SELECT * FROM [dbo].[employee]";
 	
 	public final static String GET_ALL_EMPLOYEES_BY_ROLE = "SELECT * FROM [dbo].[employee] WHERE role = ?";
+	
+	public final static String GET_ALL_EMPLOYEES_DEPARTMENT_BY_ROLE = "SELECT e.*, d.departmentName as deptName FROM [dbo].[employee] as e INNER JOIN department as d ON e.departmentId = d.departmentId WHERE role = ?";
 
 	public final static String GET_ALL_EMPLOYEES_BY_ACCOUNT = "SELECT * FROM [dbo].[employee] WHERE account = ? ";
 

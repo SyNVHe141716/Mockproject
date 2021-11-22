@@ -36,12 +36,14 @@ public class ListEmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			Employee emp = (Employee) request.getSession().getAttribute("employee");
 			Employee employee = (Employee) request.getSession().getAttribute("employee");
-			List<Employee> employees = employeeDAOImpl.getAllEmployeesByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
 			List<Department> departments = departmentDAOImpl.getAllDepartment();
 
 			request.setAttribute("departments", departments);
 			request.setAttribute("employees", employees);
+			request.setAttribute("acc", emp);
 			request.getRequestDispatcher("views/main/employee-list.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
