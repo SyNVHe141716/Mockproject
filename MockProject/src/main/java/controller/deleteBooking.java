@@ -55,23 +55,9 @@ public class deleteBooking extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookingDaoImpl bk= new BookingDaoImpl();
-		String pageIn=request.getParameter("index");
-		if(pageIn==null) {
-			pageIn="1";
-		}
-		int index=Integer.parseInt(pageIn);
 		
 		try {
-		int count = bk.countBooking();
-		int sizepage=3;
-		int endPage=count/sizepage;
-		if(count%sizepage!=0) {
-				endPage++;
-		}
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("count", count);
-		request.setAttribute("tag", index);
-		List<BookingOffice> list = bk.getListBooking(index);
+		List<BookingOffice> list = bk.getListBooking();
 			if(list.isEmpty()) {
 				
 				request.setAttribute("mess", "no data. Please add content!!!!");

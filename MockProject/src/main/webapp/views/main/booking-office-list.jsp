@@ -10,7 +10,11 @@
 	href="resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/style-main.css">
-<script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+<script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>	
 </head>
 <body>
 	<jsp:include page="../header/header.jsp"></jsp:include>
@@ -38,12 +42,14 @@
 					<option value="trip" ${category == "trip"?"selected":""}>Trip</option>
 				</select>
 				<div onclick="searchBookingOffice()"
-					class="btn btn-info p-1 pl-2 pr-2">Search</div>
+					class="btn btn-info p-1 pl-2 pr-2">Search</div><br>
+					
 			</form>
 			<p style="color: red; margin-left: 40px">
 			<%=request.getAttribute("mess")!=null?request.getAttribute("mess"):"" %></p>
-			
-			<table class="table table-striped ml-4" style="width: 95%;">
+			<div style="width: 95%" class="mt-5">
+			<table class="table table-striped ml-4 table-bordered dt-responsive nowrap hover"
+					id="tblBooking">
 				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 					<tr>
 						<td scope="col">ID</td>
@@ -59,35 +65,44 @@
 						<td>${x.officeName }</td>
 						<td>${x. destination}</td>
 						<td>
-						<a href="<%=request.getContextPath() %>/delete?id=${x.officeId}" onclick="return testConfirmDialog()"><i class="far fa-trash-alt"></i>DELETE</a>
+						<a href="<%=request.getContextPath() %>/delete?id=${x.officeId}" onclick="return testConfirmDialog()"><i class="far fa-trash-alt"></i>Delete</a>
 						<a href="<%=request.getContextPath() %>/update?id=${x.officeId}" ><i class="far fa-edit"></i>Edit</a>
 						</td>
-						
 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<div class="d-flex ml-4">
-				  <a href="<%=request.getContextPath() %>/search?index=${tag-1==0?1:tag-1}&&txtSearch=${txt}&&selectTrip=${id }&&category=${cate}" class="p-2 border text-center rounded-left text-black-50"
-                    style="width: 6.5%; border-right: 0;">Previous</a>
-                  <c:forEach begin="1" end="${endPage }" var="i">
-                  <a  class="p-2 border pl-3 pr-3 now-index  ${tag==i?"active":"" } "  href="<%=request.getContextPath() %>/search?index=${i}&&txtSearch=${txt}&&selectTrip=${id }&&category=${cate}">${i }</a>
-               		</c:forEach>
-                <a href="<%=request.getContextPath() %>/search?index=${tag+1>endPage?tag:tag+1}&&txtSearch=${txt}&&selectTrip=${id }&&category=${cate}" class="p-2 border text-center rounded-right text-black-50"
-                    style="width: 6.5%; border-left: 0;">Next</a>
-			</div>
 		</div>
 	</div>
 
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/js/search-booking-office.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
+	<script>
+		$(document).ready(function() {
+			$('#tblBooking').DataTable({
+				searching : false,
+			});
+
+		});
+	</script>
+		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<script src="resources/js/search-booking-office.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+				<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		src="<c:url value='/resources/bootstrap/js/bootstrap.min.js' />"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+	<script
+		src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>		
 		 <script type="text/javascript">
      function testConfirmDialog()  {
 

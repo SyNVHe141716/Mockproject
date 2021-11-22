@@ -42,37 +42,23 @@ public class BookingSearchController extends HttpServlet {
 		if(category.equalsIgnoreCase("Bookingoffice")) {
 			
 			BookingDaoImpl bk= new BookingDaoImpl();
-			String pageIn=request.getParameter("index");
-			if(pageIn==null) {
-				pageIn="1";
-			}
-			int index=Integer.parseInt(pageIn);
+
 			String txt=request.getParameter("txtSearch");
 			try {
 			
-			int count = bk.countBookingName(txt);
-			int sizepage=3;
-			int endPage=count/sizepage;
-			if(count%sizepage!=0) {
-					endPage++;
-			}
 			if(txt=="") {
 				request.getRequestDispatcher("/booking").forward(request, response);
 			}
 			List<Trip> lsTrip = bk.getTrip();
 			request.setAttribute("lsTrip", lsTrip);
-			request.setAttribute("endPage", endPage);
-			request.setAttribute("count", count);
-			request.setAttribute("tag", index);
 			request.setAttribute("txt", txt);
 			request.setAttribute("category", category);
-			List<BookingOffice> list = bk.getSearchBookingName(txt, index);
+			List<BookingOffice> list = bk.getSearchBookingName(txt);
 				if(list.isEmpty()) {
 					request.setAttribute("mess", "Can not find :" +txt);
 					request.getRequestDispatcher("/views/main/booking-office-list.jsp").forward(request, response);
 				}
 				else {
-					request.setAttribute("mess", "There are "+count +" search results for: "+txt);
 					request.setAttribute("list", list);
 					request.getRequestDispatcher("/views/main/booking-office-list.jsp").forward(request, response);
 				}
@@ -83,39 +69,22 @@ public class BookingSearchController extends HttpServlet {
 		}
 		else if(category.equalsIgnoreCase("Trip")) {
 			BookingDaoImpl bk= new BookingDaoImpl();
-			String pageIn=request.getParameter("index");
-			if(pageIn==null) {
-				pageIn="1";
-			}
-			int index=Integer.parseInt(pageIn);
 			String selectTrip=request.getParameter("selectTrip");
 			int id=Integer.parseInt(selectTrip);
 			
 		try {
-			
-			int count = bk.countTrip(id);
-			System.out.println(count);
-			int sizepage=3;
-			int endPage=count/sizepage;
-			if(count%sizepage!=0) {
-					endPage++;
-			}
 			if(selectTrip=="") {
 				request.getRequestDispatcher("/booking").forward(request, response);
 			}
 			List<Trip> lsTrip = bk.getTrip();
 			request.setAttribute("lsTrip", lsTrip);
-			request.setAttribute("endPage", endPage);
-			request.setAttribute("count", count);
-			request.setAttribute("tag", index);
 			request.setAttribute("id", id);
 			request.setAttribute("category", category);
-			List<BookingOffice> listT = bk.getSearchTrip(id, index);
+			List<BookingOffice> listT = bk.getSearchTrip(id);
 			if(listT.isEmpty()) {
 				request.setAttribute("mess", "Can not find");
 				request.getRequestDispatcher("/views/main/booking-office-list.jsp").forward(request, response);
 			}else {
-				request.setAttribute("mess", "There are "+count +" search results ");
 				request.setAttribute("list", listT);
 				request.getRequestDispatcher("/views/main/booking-office-list.jsp").forward(request, response);
 			}

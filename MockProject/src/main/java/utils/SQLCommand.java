@@ -53,8 +53,8 @@ public class SQLCommand {
 
 	// =============================================================
 	public static final String QUERY_GET_Booking_List = "SELECT ROW_NUMBER() over(order by officeid asc)as r,officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline\r\n"
-			+ "			FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n" + "			order by r asc\r\n"
-			+ "			OFFSET ?  ROWS FETCH NEXT 3 ROWS ONLY\r\n";
+			+ "	FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n"
+			+ "";
 	public static final String QUERY_BOOKING = "SELECT officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline,t.destination\r\n"
 			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n" + "WHERE officeId = ?";
 	public static final String QUERY_ADD_Booking_List = "\r\n"
@@ -69,13 +69,13 @@ public class SQLCommand {
 	public static final String QUERY_LIST_CBXBk = "SELECT DISTINCT officePlace\r\n" + "FROM bookingoffice";
 	public static final String QUERY_COUNT_BookingName = "SELECT COUNT(*)\r\n" + "FROM bookingoffice\r\n"
 			+ "WHERE officeName=?";
-	public static final String SEARCH_BOOKINGNAME = "\r\n"
-			+ "SELECT * from(SELECT ROW_NUMBER() over(order by officeid asc)as r,officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline\r\n"
-			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n" + "WHERE officeName like ?) as x\r\n"
-			+ "where r between ? and ?";
-	public static final String SEARCH_TRIPID = "	SELECT * from(SELECT ROW_NUMBER() over(order by officeid asc)as r,officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline\r\n"
+	public static final String SEARCH_BOOKINGNAME = "SELECT ROW_NUMBER() over(order by officeid asc)as r,officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline\r\n"
+			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n"
+			+ "WHERE officeName like ?\r\n"
+			+ "		";
+	public static final String SEARCH_TRIPID = "SELECT ROW_NUMBER() over(order by officeid asc)as r,officeId,officeName,t.destination,b.tripId,officePhone,officePlace,officePrice,startContractDeadline,endContractDeadline\r\n"
 			+ "			FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n"
-			+ "			WHERE b.tripId =?) as r\r\n" + "			where r between ? and ?";
+			+ "			WHERE b.tripId =?";
 
 	public static final String Count_TripID = "SELECT COUNT(*)\r\n"
 			+ "FROM bookingoffice b join trip t on b.tripId=t.tripId\r\n" + "where b.tripId =?";

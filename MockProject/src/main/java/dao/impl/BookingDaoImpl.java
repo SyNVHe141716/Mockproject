@@ -18,13 +18,12 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 	private ResultSet rs = null;
 
 	@Override
-	public List<BookingOffice> getListBooking(int index) throws SQLException {
+	public List<BookingOffice> getListBooking() throws SQLException {
 		List<BookingOffice> list = new ArrayList<>();
 		BookingOffice bk = null;
 		try {
 			conn = DBConnection.getInstance().getConnection();
 			ps = conn.prepareStatement(utils.SQLCommand.QUERY_GET_Booking_List);
-			ps.setInt(1, (index - 1) * 3);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				bk = new BookingOffice();
@@ -245,15 +244,13 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 		return 0;
 	}
 
-	public List<BookingOffice> getSearchBookingName(String txt, int index) throws SQLException {
+	public List<BookingOffice> getSearchBookingName(String txt) throws SQLException {
 		List<BookingOffice> list = new ArrayList<>();
 		BookingOffice bk = null;
 		try {
 			conn = DBConnection.getInstance().getConnection();
 			ps = conn.prepareStatement(utils.SQLCommand.SEARCH_BOOKINGNAME);
 			ps.setString(1, "%" + txt + "%");
-			ps.setInt(2, (index * 3) - 2);
-			ps.setInt(3, (index * 3));
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				bk = new BookingOffice();
@@ -321,15 +318,13 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 		return null;
 	}
 
-	public List<BookingOffice> getSearchTrip(int id, int index) throws SQLException {
+	public List<BookingOffice> getSearchTrip(int id) throws SQLException {
 		List<BookingOffice> list = new ArrayList<>();
 		BookingOffice bk = null;
 		try {
 			conn = DBConnection.getInstance().getConnection();
 			ps = conn.prepareStatement(utils.SQLCommand.SEARCH_TRIPID);
 			ps.setInt(1, id);
-			ps.setInt(2, (index * 3) - 2);
-			ps.setInt(3, (index * 3));
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				bk = new BookingOffice();
@@ -401,7 +396,7 @@ public class BookingDaoImpl implements BookingOfficeDAO {
 //			// TODO: handle exception
 //			e.printStackTrace();
 //		}
-		List<BookingOffice> ls = bk.getSearchTrip(1,15);
+		List<BookingOffice> ls = bk.getListBooking();
 		if(ls.isEmpty()) {
 			System.out.println("123");
 		}else {
