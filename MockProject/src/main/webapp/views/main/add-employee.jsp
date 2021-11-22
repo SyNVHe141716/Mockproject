@@ -90,6 +90,23 @@
         </form>
 	</div>
 
+	<script type="text/javascript">
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if (dd < 10) {
+	   dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	   mm = '0' + mm;
+	} 
+	    
+	today = yyyy + '-' + mm + '-' + dd;
+	document.getElementById("dateofbirth").setAttribute("max", today);
+	</script>
 	<script src="<c:url value='/resources/js/validate-employee-manager.js'/>"></script>
 	<script src="<c:url value='/resources/bootstrap/js/bootstrap.min.js'/>"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
