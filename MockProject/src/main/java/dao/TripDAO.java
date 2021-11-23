@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,7 +11,11 @@ public interface TripDAO {
 	
 	public Trip getTripById(int id) throws SQLException;
 	
+	public List<Trip> getAllTripsByDateAndDes(Date date, String des) throws SQLException;
+	
 	public boolean updateTripById(Trip trip) throws SQLException;
 	
 	public boolean addTripById(Trip trip) throws SQLException;
+	
+	public boolean deleteTripById(int id) throws SQLException;
 }

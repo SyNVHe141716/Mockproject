@@ -24,6 +24,6 @@ function changeYear() {
 	}
 }
 
-function searchBookingOffice() {
+function searchTrip() {
 	document.getElementById('form-search').submit();
 }

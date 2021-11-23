@@ -109,4 +109,8 @@ public class SQLCommand {
 	
 	public static final String INSERT_TRIP="INSERT INTO [dbo].[trip](bookedTicketNumber,carType ,departtureDate ,departureTime,destination,driver,maximumOnlineTicketNumber )\n"
 			+ "VALUES(?,?,?,?,?,?,?)";
+	
+	public static final String GET_ALL_TRIP_BY_DATE_AND_DES ="SELECT * FROM [dbo].[trip] WHERE departtureDate = ? AND destination = ?";
+	
+	public static final String DELETE_TRIP_BY_ID="DELETE FROM [dbo].[trip] WHERE tripId = ?";
 }

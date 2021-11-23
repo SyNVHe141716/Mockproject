@@ -20,12 +20,12 @@
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Trip list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="float-right d-flex mr-4 mb-4">
+			<form id="form-search" class="float-right d-flex mr-4 mb-4" method="POST" action="TripSearchController">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="User Search" class="box-search border-custom p-1 mr-2"
-					style="width: 35%;">
-				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2">Search</div>
+					style="width: 35%;" value="${inputSearch }">
+				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2" id="form-search">Search</div>
 				<select onchange="changeDay()" name="day" id="day"
 					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
 					<option value="01">01</option>
@@ -59,7 +59,8 @@
 					<option value="29">29</option>
 					<option value="30">30</option>
 					<option value="31">31</option>
-				</select> <select onchange="changeMonth()" name="month" id="month"
+				</select> 
+				<select onchange="changeMonth()" name="month" id="month"
 					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
 					<option value="01">01</option>
 					<option value="02" selected>02</option>
@@ -73,7 +74,8 @@
 					<option value="10">10</option>
 					<option value="11">11</option>
 					<option value="12">12</option>
-				</select> <select onchange="changeYear()" name="year" id="year"
+				</select> 
+				<select onchange="changeYear()" name="year" id="year"
 					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
 					<option value="2015">2015</option>
 					<option value="2016">2016</option>

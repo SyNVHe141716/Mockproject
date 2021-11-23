@@ -1,6 +1,7 @@
 package dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -126,6 +127,64 @@ public class TripDAOImpl implements TripDAO{
 			pre.setString(5, trip.getDestination());
 			pre.setString(6, trip.getDriver());
 			pre.setInt(7, trip.getMaximumOnlineTicketNumber());
+			status = pre.execute();
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return status;
+	}
+
+	@Override
+	public List<Trip> getAllTripsByDateAndDes(Date date, String des) throws SQLException {
+		List<Trip> trips = new ArrayList<Trip>();
+		Trip trip = null;
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.GET_ALL_TRIP_BY_DATE_AND_DES);
+			pre.setDate(1, date);
+			pre.setString(2, des);
+			rs = pre.executeQuery();
+			while(rs.next()) {
+				trip = new Trip();
+				trip.setTripId(rs.getInt("tripId"));
+				trip.setBookedTicketNumber(rs.getInt("bookedTicketNumber"));
+				trip.setCarType(rs.getString("carType"));
+				trip.setDeparttureDate(rs.getDate("departtureDate"));
+				trip.setDepartureTime(rs.getTime("departureTime"));
+				trip.setDestination(rs.getString("destination"));
+				trip.setDriver(rs.getString("driver"));
+				trip.setMaximumOnlineTicketNumber(rs.getInt("maximumOnlineTicketNumber"));
+				trips.add(trip);
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return trips;
+	}
+
+	@Override
+	public boolean deleteTripById(int id) throws SQLException {
+		boolean status = true;
+		try {
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(SQLCommand.DELETE_TRIP_BY_ID);
+			pre.setInt(1, id);
 			status = pre.execute();
 		} finally {
 			if (rs != null) {

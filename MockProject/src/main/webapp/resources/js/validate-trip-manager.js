@@ -108,6 +108,6 @@ function clickDetele() {
 	var check = confirm('Are you sure want to delete?');
 	var id = document.getElementById('destination').value;
 	if (check) {
-		window.location.href = '#';
+		window.location.href = 'TripDeleteController?id='+id;
 	}
 }
