@@ -61,10 +61,10 @@
 						manager<i class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="tripList" href="trip-list.jsp"
+					<a id="tripList" href="<%=request.getContextPath()%>/TripListController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Trip list</a>
-					<a id="addTrip" href="add-trip.jsp" class="d-block ml-1 p-3"><i
+					<a id="addTrip" href="<%=request.getContextPath()%>/TripAddController" class="d-block ml-1 p-3"><i
 						class="fas fa-plus mr-2"></i>Add trip</a>
 				</details></li>
 			<li class="p-3 border-bottom"><details id="ticket">

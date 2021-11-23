@@ -95,4 +95,18 @@ public class SQLCommand {
 	public static final String GET_TRIP_FOR_UPDATE_TICKET = "select * from trip where bookedTicketNumber < maximumOnlineTicketNumber or  tripId = (select tripId from ticket where ticketId = ?)";
 	public static final String GET_CAR_FOR_UPDATE_TICKET = "select * from car where licensePlate not in (select licensePlate from ticket) or licensePlate = (select licensePlate from ticket where ticketId = ?)";
 	public static final String DELETE_TICKET = "DELETE FROM [dbo].[ticket] WHERE ticketId = ?";
+	
+	/*
+	 * SQL Command Trip: ThienNT11 Create Date: 22/11/2021
+	 * */
+	
+	public static final String GET_ALL_TRIPS ="SELECT * FROM [dbo].[trip]";
+	
+	public static final String GET_TRIP_BY_ID ="SELECT * FROM [dbo].[trip] WHERE tripId = ?";
+	
+	public static final String UPDATE_TRIP_BY_ID="UPDATE [dbo].[trip] SET bookedTicketNumber=?,carType=?,departtureDate=?,departureTime=?,destination=?,driver=?,maximumOnlineTicketNumber=?\n"
+			+ "WHERE tripId=?";
+	
+	public static final String INSERT_TRIP="INSERT INTO [dbo].[trip](bookedTicketNumber,carType ,departtureDate ,departureTime,destination,driver,maximumOnlineTicketNumber )\n"
+			+ "VALUES(?,?,?,?,?,?,?)";
 }

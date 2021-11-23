@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Trip List</title>
 <link rel="stylesheet"
-	href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/css/header.css">
-<link rel="stylesheet" href="../../resources/css/style-main.css">
+	href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -83,7 +85,7 @@
 					<option value="2022">2022</option>
 				</select>
 			</form>
-			<table class="table table-striped ml-4" style="width: 95%;">
+			<table class="table table-striped ml-4" style="width: 95%;" id="tblTrip">
 				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 					<tr>
 						<td scope="col">No</td>
@@ -96,19 +98,23 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td scope="col">7</td>
-						<td>Gia Lai</td>
-						<td>10:30</td>
-						<td>Tran Van Loc</td>
-						<td>Giuong Nam 50 Cho</td>
-						<td>0</td>
-						<td><a href="#"><i class="far fa-edit"></i>Edit</a> <a
-							href="#"><i class="far fa-trash-alt"></i>Delete</a></td>
+					<c:forEach items="${trips }" var="trip">
+						<tr>
+						<td scope="col">${trip.tripId }</td>
+						<td>${trip.destination }</td>
+						<td>${trip.departureTime }</td>
+						<td>${trip.driver }</td>
+						<td>${trip.carType }</td>
+						<td>${trip.bookedTicketNumber }</td>
+						<td>
+							<a href="TripUpdateController?id=${trip.tripId }"><i class="far fa-edit"></i>Edit</a>
+							<a href="TripDeleteController?id=${trip.tripId }"><i class="far fa-trash-alt"></i>Delete</a>
+						</td>
 					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-			<div class="d-flex ml-4">
+			<!-- <div class="d-flex ml-4">
 				<a href="#"
 					class="p-2 border text-center rounded-left text-black-50"
 					style="width: 6.5%; border-right: 0;">Previous</a> <a href="#"
@@ -117,19 +123,28 @@
 					class="p-2 border pl-3 pr-3 now-index">3</a> <a href="#"
 					class="p-2 border text-center rounded-right text-black-50"
 					style="width: 6.5%; border-left: 0;">Next</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
-
-
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../resources/js/search-trip.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#tblTrip').DataTable({
+				searching : false,
+			});
+		});
+	</script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/js/search-trip.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+		src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+	<script
+		src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
 </body>
 </html>

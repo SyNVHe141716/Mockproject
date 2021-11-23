@@ -16,7 +16,7 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
-		<form action="#" method="get"
+		<form action="<%=request.getContextPath()%>/TripAddController" method="POST"
 			class="float-left main-content border-top" id="form-add-trip">
 			<h2 class="m-4">Add Trip</h2>
 			<hr class="m-4">
@@ -51,6 +51,12 @@
 						id="carType" required></td>
 				</tr>
 				<tr>
+					<td class="font-weight-bold pr-5 pt-2 pb-2">Booked ticket number<label class="required">(*)</label>
+					</td>
+					<td><input class="box form-control pt-2 pb-2 text-sm"
+						placeholder="0" type="text" name="bookedTicketNumber" id="maximum" required value="${trip.bookedTicketNumber }"></td>
+				</tr>
+				<tr>
 					<td class="font-weight-bold pr-5 pt-2 pb-2">Maximum online
 						ticket number<label class="required">(*)</label>
 					</td>
@@ -73,6 +79,8 @@
 					<i class="fas fa-plus mr-1"></i>Add
 				</div>
 			</div>
+			<i ${success eq true ?"":"hidden" } style="color: green">Add Successfully!!!</i>
+			<i ${falsed eq false ?"":"hidden" } style="color: red">Add Falsed!!!</i>
 		</form>
 	</div>
 
