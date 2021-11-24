@@ -19,7 +19,7 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
-	<form action="<%=request.getContextPath() %>/add" method="post"
+	<form action="<%=request.getContextPath() %>/AddBookingController" method="post"
 			class="float-left main-content border-top"
 			id="form-add-booking-office">
 			<h2 class="m-4">Add Booking Office</h2>

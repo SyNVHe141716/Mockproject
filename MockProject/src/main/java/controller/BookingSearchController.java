@@ -47,7 +47,7 @@ public class BookingSearchController extends HttpServlet {
 			try {
 			
 			if(txt=="") {
-				request.getRequestDispatcher("/booking").forward(request, response);
+				request.getRequestDispatcher("/BookingListController").forward(request, response);
 			}
 			List<Trip> lsTrip = bk.getTrip();
 			request.setAttribute("lsTrip", lsTrip);
@@ -74,7 +74,7 @@ public class BookingSearchController extends HttpServlet {
 			
 		try {
 			if(selectTrip=="") {
-				request.getRequestDispatcher("/booking").forward(request, response);
+				request.getRequestDispatcher("/BookingListController").forward(request, response);
 			}
 			List<Trip> lsTrip = bk.getTrip();
 			request.setAttribute("lsTrip", lsTrip);
