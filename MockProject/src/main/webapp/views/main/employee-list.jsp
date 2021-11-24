@@ -16,13 +16,18 @@
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
+	<style type="text/css">
+		.pagination {
+			float: right !important;
+	}
+	</style>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-employee-manager.jsp"></jsp:include>
 		<div class="float-left main-content border-top">
             <h2 class="m-4">Employee List</h2>
             <hr class="m-4">
-            <form id="form-search" class="float-right d-flex mr-lg-5 mb-4 justify-content-end" action="SearchEmployeeController" method="POST">
+            <form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" action="SearchEmployeeController" method="POST">
                 <i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
                 <input id="input-search" name="input-search" type="text" placeholder="User Search"
                     class="box-search border-custom p-1 mr-2" style="width: 35%; height: 35px;" value="${inputSearch }">
@@ -35,7 +40,7 @@
                     <p class="d-inline font-weight-normal">Filter by</p>
                 </i>
                 <select onchange="changeCategory()" name="category" id="category" class="border-custom pt-1 pb-2 mr-2"
-                    style="width: 22%;">
+                    style="width: 10%;">
                     <option value="name" ${category eq "name" ?"selected":"" } >Name</option>
                     <option value="dateofbirth" ${category eq "dateofbirth" ?"selected":"" }>Date of birth</option>
                     <option value="address" ${category eq "address" ?"selected":"" }>Address</option>
@@ -44,6 +49,7 @@
                 </select>
                 <div onclick="searchEmployee()" class="btn btn-info p-1 pl-2 pr-2">Search</div>
             </form>
+            <div style="width: 95%">
             <table class="table table-striped ml-4" style="width: 95%;" id="tblEmployee">
                 <thead class="font-weight-bold" style="background-color: #e7e7e7;">
                     <tr>
@@ -70,6 +76,7 @@
                     </c:forEach>
                 </tbody>
             </table>
+            </div>
             <!-- <div class="d-flex ml-4">
                 <a href="#" class="p-2 border text-center rounded-left text-black-50"
                     style="width: 6.5%; border-right: 0;">Previous</a>
@@ -82,7 +89,11 @@
 	<script>
 		$(document).ready(function() {
 			$('#tblEmployee').DataTable({
-				searching : false,
+				bPaginate : true,
+				bLengthChange : false,
+				bFilter : false,
+				bInfo : false,
+				bAutoWidth : false
 			});
 		});
 	</script>

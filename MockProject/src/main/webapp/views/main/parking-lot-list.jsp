@@ -20,6 +20,11 @@
 	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
+<style type="text/css">
+		.pagination {
+			float: right !important;
+	}
+	</style>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
@@ -29,7 +34,7 @@
 			<form id="form-search"
 				action="<%=request.getContextPath()%>/parking-lot-search"
 				method="post"
-				class="float-right d-flex mr-lg-5 mb-4 justify-content-end">
+				class="d-flex mr-lg-5 mb-4 justify-content-end">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 
 				<input id="name-search" name="name-search" type="text"
@@ -59,7 +64,7 @@
 				</select>
 				<button type="submit" class="btn btn-info p-1 pl-2 pr-2 float-right">Search</button>
 			</form>
-			<div style="width: 95%" class="mt-5">
+			<div style="width: 95%">
 				<table
 					class="table table-striped ml-4 table-bordered dt-responsive nowrap hover"
 					id="tblParking">
@@ -103,7 +108,11 @@
 	<script>
 		$(document).ready(function() {
 			$('#tblParking').DataTable({
-				searching : false,
+				bPaginate : true,
+				bLengthChange : false,
+				bFilter : false,
+				bInfo : false,
+				bAutoWidth : false
 			});
 
 		});

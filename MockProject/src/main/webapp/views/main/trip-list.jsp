@@ -14,20 +14,25 @@
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
+<style type="text/css">
+		.pagination {
+			float: right !important;
+	}
+	</style>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Trip list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="float-right d-flex mr-4 mb-4" method="POST" action="TripSearchController">
+			<form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" method="POST" action="TripSearchController">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="User Search" class="box-search border-custom p-1 mr-2"
 					style="width: 35%;" value="${inputSearch }">
-				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2" id="form-search">Search</div>
+				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2 mr-2" id="form-search">Search</div>
 				<select onchange="changeDay()" name="day" id="day"
-					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
+					class="border pt-1 pb-2 mr-2" style="width: 10%;">
 					<option value="01">01</option>
 					<option value="02" selected>02</option>
 					<option value="03">03</option>
@@ -61,7 +66,7 @@
 					<option value="31">31</option>
 				</select> 
 				<select onchange="changeMonth()" name="month" id="month"
-					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
+					class="border pt-1 pb-2 mr-2" style="width: 10%;">
 					<option value="01">01</option>
 					<option value="02" selected>02</option>
 					<option value="03">03</option>
@@ -76,7 +81,7 @@
 					<option value="12">12</option>
 				</select> 
 				<select onchange="changeYear()" name="year" id="year"
-					class="border-custom pt-1 pb-2 mr-2" style="width: 15%;">
+					class="border pt-1 pb-2 mr-2" style="width: 10%;">
 					<option value="2015">2015</option>
 					<option value="2016">2016</option>
 					<option value="2017">2017</option>
@@ -87,7 +92,8 @@
 					<option value="2022">2022</option>
 				</select>
 			</form>
-			<table class="table table-striped ml-4" style="width: 95%;" id="tblTrip">
+			<div style="width: 95%;">
+			<table class="table table-striped ml-4"id="tblTrip">
 				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 					<tr>
 						<td scope="col">No</td>
@@ -116,6 +122,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			</div>
 			<!-- <div class="d-flex ml-4">
 				<a href="#"
 					class="p-2 border text-center rounded-left text-black-50"
@@ -131,7 +138,11 @@
 	<script>
 		$(document).ready(function() {
 			$('#tblTrip').DataTable({
-				searching : false,
+				bPaginate : true,
+				bLengthChange : false,
+				bFilter : false,
+				bInfo : false,
+				bAutoWidth : false
 			});
 		});
 	</script>

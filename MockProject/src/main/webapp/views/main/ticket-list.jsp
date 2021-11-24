@@ -14,10 +14,10 @@
 </head>
 <body>
 	<style type="text/css">
-.pagination {
-	float: right !important;
-}
-</style>
+		.pagination {
+			float: right !important;
+	}
+	</style>
 
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
