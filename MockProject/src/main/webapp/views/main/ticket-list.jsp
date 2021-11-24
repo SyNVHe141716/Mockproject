@@ -82,7 +82,7 @@
 				</select>
 			</form>
 			<div style="width: 95%">
-				<table class="table table-striped ml-4" id="tblTicket">
+				<table class="table table-striped ml-4 table-bordered dt-responsive nowrap table-hover" id="tblTicket">
 					<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 						<tr>
 							<td scope="col">No</td>

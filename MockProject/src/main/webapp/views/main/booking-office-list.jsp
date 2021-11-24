@@ -23,7 +23,7 @@
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Booking office list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="float-right d-flex mr-4 mb-4" action="<%=request.getContextPath() %>/search?index=1" method="get">
+			<form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" action="<%=request.getContextPath() %>/search?index=1" method="get">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="txtSearch" value="${txt }" type="text"
 					placeholder="Booking Office Search"
@@ -47,8 +47,8 @@
 			</form>
 			<p style="color: red; margin-left: 40px">
 			<%=request.getAttribute("mess")!=null?request.getAttribute("mess"):"" %></p>
-			<div style="width: 95%" class="mt-5">
-			<table class="table table-striped ml-4 table-bordered dt-responsive nowrap hover"
+			<div style="width: 95%">
+			<table class="table table-striped ml-4 table-bordered dt-responsive nowrap table-hover"
 					id="tblBooking">
 				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 					<tr>
@@ -78,7 +78,11 @@
 	<script>
 		$(document).ready(function() {
 			$('#tblBooking').DataTable({
-				searching : false,
+				bPaginate : true,
+				bLengthChange : false,
+				bFilter : false,
+				bInfo : false,
+				bAutoWidth : false
 			});
 
 		});

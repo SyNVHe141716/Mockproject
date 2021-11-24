@@ -66,7 +66,7 @@
 			</form>
 			<div style="width: 95%">
 				<table
-					class="table table-striped ml-4 table-bordered dt-responsive nowrap hover"
+					class="table table-striped ml-4 table-bordered dt-responsive nowrap table-hover"
 					id="tblParking">
 					<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 						<tr>

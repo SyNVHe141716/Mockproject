@@ -50,7 +50,7 @@
                 <div onclick="searchEmployee()" class="btn btn-info p-1 pl-2 pr-2">Search</div>
             </form>
             <div style="width: 95%">
-            <table class="table table-striped ml-4" style="width: 95%;" id="tblEmployee">
+            <table class="table table-striped ml-4 table-bordered dt-responsive nowrap table-hover" id="tblEmployee">
                 <thead class="font-weight-bold" style="background-color: #e7e7e7;">
                     <tr>
                         <td scope="col">ID</td>
