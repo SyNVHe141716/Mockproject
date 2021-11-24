@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8>
 <title>Add Car</title>
 <link rel="stylesheet"
-	href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="../../resources/css/header.css">
-<link rel="stylesheet" href="../../resources/css/style-main.css">
+	href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
-		<form action="#" method="get"
+		<form action="AddCarController" method="post"
 			class="float-left main-content border-top"
 			id="form-add-car">
 			<h2 class="m-4">Add Car</h2>
@@ -46,20 +47,19 @@
 						class="required">(*)</label></td>
 					<td><select name="company"
 						class="box form-control pt-2 pb-2 text-sm">
-							<option value="phuongTrang" selected>Phuong Trang</option>
-							<option value="camVan">Cam Van</option>
-							<option value="hoangLong">Hoang Long</option>
+						<c:forEach items="${listcom}" var="c">
+							<option value="${c.companyId}" selected>${c.companyName}</option>
+							</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
 					<td class="font-weight-bold pr-5 pt-2 pb-2">Parking lot <label
 						class="required">(*)</label></td>
 					<td><select name="parkingLot"
-						class="box form-control pt-2 pb-2 text-sm">
-							<option value=" " selected>    </option>
-							<option value="baiso1">Bai so 1</option>
-							<option value="baiso2">Bai so 2</option>
-							<option value="baiso3">Bai so 3</option>
+						class="box form-control pt-2 pb-2 text-sm">						
+							<c:forEach items="${listp}" var="p">
+							<option value="${p.id}">${p.name}</option>
+						</c:forEach>
 					</select></td>
 				</tr>
 			</table>
@@ -72,10 +72,11 @@
 				</div>
 			</div>
 		</form>
+		<p class="text-danger text-center mt-3">${errorSQL}</p>
 	</div>
 
-	<script src="../../resources/js/validate-car-manager.js"></script>
-	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/js/validate-car-manager.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

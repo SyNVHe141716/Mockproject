@@ -31,8 +31,7 @@ public class LoginEmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.sendRedirect("views/main/login.jsp");
+		request.getRequestDispatcher("views/main/login.jsp").forward(request, response);
 	}
 
 	/**

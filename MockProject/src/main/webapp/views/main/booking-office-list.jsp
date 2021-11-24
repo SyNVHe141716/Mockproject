@@ -66,7 +66,7 @@
 						<td>${x. destination}</td>
 						<td>
 						<a href="<%=request.getContextPath() %>/delete?id=${x.officeId}" onclick="return testConfirmDialog()"><i class="far fa-trash-alt"></i>Delete</a>
-						<a href="<%=request.getContextPath() %>/update?id=${x.officeId}" ><i class="far fa-edit"></i>Edit</a>
+						<a href="<%=request.getContextPath() %>/UpdateBookingController?id=${x.officeId}" ><i class="far fa-edit"></i>Edit</a>
 						</td>
 					</tr>
 					</c:forEach>

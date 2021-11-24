@@ -18,7 +18,7 @@ import entities.Trip;
 /**
  * Servlet implementation class BookinglistController
  */
-@WebServlet("/booking")
+@WebServlet("/BookingListController")
 public class BookinglistController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

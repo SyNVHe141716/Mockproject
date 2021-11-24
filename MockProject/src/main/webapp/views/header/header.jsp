@@ -24,27 +24,27 @@
 
 	<script type="text/javascript">
 	var pathName = window.location.pathname;
-		if (pathName.includes('add-employee.jsp') || pathName.includes('employee-list.jsp') || pathName.includes('view-employee.jsp')) {
+		if (pathName.includes('AddEmployeeController') || pathName.includes('ListEmployeeController') || pathName.includes('ViewEmployeeController')) {
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-users");
 			document.getElementById("nav-title").innerHTML = 'Employee';
 		}
-		else if(pathName.includes('add-booking-office.jsp') || pathName.includes('booking-office-list.jsp') || pathName.includes('edit-delete-booking-office.jsp')){
+		else if(pathName.includes('AddBookingController') || pathName.includes('BookingListController') || pathName.includes('UpdateBookingController')){
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-cart-plus");
 			document.getElementById("nav-title").innerHTML = 'Booking office';
 		}
-		else if(pathName.includes('add-parking-lot.jsp') || pathName.includes('parking-lot-list.jsp') || pathName.includes('edit-parking-lot.jsp')){
+		else if(pathName.includes('add-parking-lot') || pathName.includes('parking-lot-list') || pathName.includes('edit-parking-lot')){
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-map-marker-alt");
 			document.getElementById("nav-title").innerHTML = 'Parking lot';
 		}
-		else if(pathName.includes('add-car.jsp') || pathName.includes('car-list.jsp') || pathName.includes('edit-delete-car.jsp')){
+		else if(pathName.includes('AddCarController') || pathName.includes('ListCarController') || pathName.includes('UpdateCarController')){
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-car");
 			document.getElementById("nav-title").innerHTML = 'Car';
 		}
-		else if(pathName.includes('add-trip.jsp') || pathName.includes('trip-list.jsp') || pathName.includes('edit-delete-trip.jsp')){
+		else if(pathName.includes('TripAddController') || pathName.includes('TripListController') || pathName.includes('TripUpdateController')){
 			document.getElementById("icon-nav").classList.add("fas");
 			document.getElementById("icon-nav").classList.add("fa-plane");
 			document.getElementById("icon-nav").style.transform = 'rotate(-45deg)';

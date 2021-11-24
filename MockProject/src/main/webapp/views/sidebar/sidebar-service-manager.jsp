@@ -6,9 +6,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking office manager</title>
-<link rel="stylesheet" href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />">
+<link rel="stylesheet"
+	href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />">
 <link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/style-main.css' />">
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/style-main.css' />">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
@@ -20,10 +22,10 @@
 							class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="carList" href="car-list.jsp"
+					<a id="carList" href="ListCarController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Car list</a>
-					<a id="addCar" href="add-car.jsp" class="d-block ml-1 p-3"><i
+					<a id="addCar" href="AddCarController" class="d-block ml-1 p-3"><i
 						class="fas fa-plus mr-2"></i>Add Car</a>
 				</details></li>
 			<li class="p-3 border-bottom"><details id="bookingOffice">
@@ -33,10 +35,10 @@
 							style="line-height: 24px;"></i>
 					</summary>
 					<a id="bookingOfficeList"
-						href="<%=request.getContextPath()%>/booking"
+						href="<%=request.getContextPath()%>/BookingListController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Booking office list</a>
-					<a id="addBookingOffice" href="<%=request.getContextPath()%>/add"
+					<a id="addBookingOffice" href="<%=request.getContextPath()%>/AddBookingController"
 						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
 						Booking office</a>
 				</details></li>
@@ -61,11 +63,14 @@
 						manager<i class="fas fa-chevron-down float-right"
 							style="line-height: 24px;"></i>
 					</summary>
-					<a id="tripList" href="<%=request.getContextPath()%>/TripListController"
+					<a id="tripList"
+						href="<%=request.getContextPath()%>/TripListController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Trip list</a>
-					<a id="addTrip" href="<%=request.getContextPath()%>/TripAddController" class="d-block ml-1 p-3"><i
-						class="fas fa-plus mr-2"></i>Add trip</a>
+					<a id="addTrip"
+						href="<%=request.getContextPath()%>/TripAddController"
+						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
+						trip</a>
 				</details></li>
 			<li class="p-3 border-bottom"><details id="ticket">
 					<summary style="list-style: none; color: #007bff;">
@@ -77,18 +82,19 @@
 					<a id="ticketList" href="TicketListController"
 						class="d-block ml-1 border-bottom p-3"><i
 						class="fas fa-list-ul mr-2"></i>Ticket list</a>
-					<a id="addTicket" href="AddTicketController" class="d-block ml-1 p-3"><i
-						class="fas fa-plus mr-2"></i>Add ticket</a>
+					<a id="addTicket" href="AddTicketController"
+						class="d-block ml-1 p-3"><i class="fas fa-plus mr-2"></i>Add
+						ticket</a>
 				</details></li>
 		</ul>
 	</div>
 
 	<script>
 		var pathName = window.location.pathname;
-		if (pathName.includes('add-booking-office.jsp')) {
+		if (pathName.includes('AddBookingController')) {
 			document.getElementById('addBookingOffice').classList.add("active");
 			document.getElementById('bookingOffice').open = true;
-		} else if (pathName.includes('booking-office-list.jsp')) {
+		} else if (pathName.includes('BookingListController')) {
 			document.getElementById('bookingOfficeList').classList
 					.add("active");
 			document.getElementById('bookingOffice').open = true;
@@ -98,16 +104,16 @@
 		} else if (pathName.includes('parking-lot-list')) {
 			document.getElementById('parkingLotList').classList.add("active");
 			document.getElementById('parkingLotMenu').open = true;
-		} else if (pathName.includes('car-list.jsp')) {
+		} else if (pathName.includes('ListCarController')) {
 			document.getElementById('carList').classList.add("active");
 			document.getElementById('car').open = true;
-		} else if (pathName.includes('add-car.jsp')) {
+		} else if (pathName.includes('AddCarController')) {
 			document.getElementById('addCar').classList.add("active");
 			document.getElementById('car').open = true;
-		} else if (pathName.includes('add-trip.jsp')) {
+		} else if (pathName.includes('TripAddController')) {
 			document.getElementById('addTrip').classList.add("active");
 			document.getElementById('trip').open = true;
-		} else if (pathName.includes('trip-list.jsp')) {
+		} else if (pathName.includes('TripListController')) {
 			document.getElementById('tripList').classList.add("active");
 			document.getElementById('trip').open = true;
 		} else if (pathName.includes('AddTicketController')) {
@@ -118,20 +124,5 @@
 			document.getElementById('ticket').open = true;
 		}
 	</script>
-
-	<c:if test="${activeParkingLotList == true }">
-		<script type="text/javascript">
-			document.getElementById('parkingLotMenu').setAttribute("open",
-					"true");
-			document.getElementById('parkingLotList').classList.add("active");
-		</script>
-	</c:if>
-	<c:if test="${activeParkingLotAdd == true }">
-		<script type="text/javascript">
-			document.getElementById('parkingLotMenu').setAttribute("open",
-					"true");
-			document.getElementById('addParkingLot').classList.add("active");
-		</script>
-	</c:if>
 </body>
 </html>
