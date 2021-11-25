@@ -1,28 +1,23 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CarDAO;
-import dao.impl.CarDAOImpl;
-
 /**
- * Servlet implementation class DeleteCarController
+ * Servlet implementation class AppExceptionHandler
  */
-@WebServlet("/DeleteCarController")
-public class DeleteCarController extends HttpServlet {
+@WebServlet("/AppExceptionHandler")
+public class AppExceptionHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCarController() {
+    public AppExceptionHandler() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +26,7 @@ public class DeleteCarController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("cid");
-		CarDAO dao = new CarDAOImpl();   
-        try {
-			dao.delete(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			String err = "Connect SQL Server fail";
-			request.setAttribute("errorSQL", err);
-		}
-        response.sendRedirect("ListCarController");
+		request.getRequestDispatcher("views/main/PageNotFound.jsp").forward(request, response);
 	}
 
 	/**

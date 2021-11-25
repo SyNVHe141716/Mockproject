@@ -72,7 +72,7 @@ public class CarDAOImpl implements CarDAO {
 	public List<Car> getAllCart() throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
 		try {
-			String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+			String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 					+ "					inner join packinglot p on p.packId = c.packId\r\n"
 					+ "					inner join company n on n.companyId = c.companyId";
 			con = DBConnection.getInstance().getConnection();
@@ -87,6 +87,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);
@@ -195,7 +196,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> getAlllicensePlate(String licensePlate) throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
-		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 				+ "									inner join packinglot p on p.packId = c.packId\r\n"
 				+ "									inner join company n on n.companyId = c.companyId where c.licensePlate like ?";
 		try {
@@ -212,6 +213,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);
@@ -234,7 +236,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> getAllcarColor(String carColor) throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
-		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 				+ "									inner join packinglot p on p.packId = c.packId\r\n"
 				+ "									inner join company n on n.companyId = c.companyId where c.carColor like ?";
 		try {
@@ -251,6 +253,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);
@@ -273,7 +276,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> getAllcarType(String carType) throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
-		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 				+ "									inner join packinglot p on p.packId = c.packId\r\n"
 				+ "									inner join company n on n.companyId = c.companyId where c.carType like ?";
 		try {
@@ -290,6 +293,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);
@@ -312,7 +316,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> getAllcompanyName(String companyName) throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
-		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 				+ "									inner join packinglot p on p.packId = c.packId\r\n"
 				+ "									inner join company n on n.companyId = c.companyId where n.companyName = ?";
 		try {
@@ -329,6 +333,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);
@@ -351,7 +356,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> getAllpackName(String packName) throws SQLException {
 		List<Car> cars = new ArrayList<Car>();
-		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName  from car c\r\n"
+		String sql = "select c.licensePlate,c.carColor,c.carType , n.companyName, p.packName, p.packId  from car c\r\n"
 				+ "									inner join packinglot p on p.packId = c.packId\r\n"
 				+ "									inner join company n on n.companyId = c.companyId where p.packName = ?";
 		try {
@@ -368,6 +373,7 @@ public class CarDAOImpl implements CarDAO {
 				c.setCarType(rs.getString("carType"));
 				y.setCompanyName(rs.getString("companyName"));
 				p.setName(rs.getString("packName"));
+				p.setId(rs.getInt("packId"));
 				c.setParkingLot(p);
 				c.setCompany(y);
 				cars.add(c);

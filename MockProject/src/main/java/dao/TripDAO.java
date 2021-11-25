@@ -18,4 +18,6 @@ public interface TripDAO {
 	public boolean addTripById(Trip trip) throws SQLException;
 	
 	public boolean deleteTripById(int id) throws SQLException;
+	
+	int getMaxYear() throws Exception;
 }

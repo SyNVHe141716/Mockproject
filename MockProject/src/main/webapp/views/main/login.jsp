@@ -29,6 +29,7 @@
                     </label> -->
                     <button class="btn btn-primary" id="button" style="background-color:#007ac9;" type="submit">Login</button>
                     <i ${acc eq null ? "hidden":"" } style="color: red">Wrong user or password!!!</i>
+                    <input type="hidden" name="redirectId" value="${param.redirectId}" />
                 </div>
             </div>
         </form>

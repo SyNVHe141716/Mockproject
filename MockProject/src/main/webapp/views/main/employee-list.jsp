@@ -27,7 +27,7 @@
 		<div class="float-left main-content border-top">
             <h2 class="m-4">Employee List</h2>
             <hr class="m-4">
-            <form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" action="SearchEmployeeController" method="POST">
+            <form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" action="ListEmployeeController" method="POST">
                 <i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
                 <input id="input-search" name="input-search" type="text" placeholder="User Search"
                     class="box-search border-custom p-1 mr-2" style="width: 35%; height: 35px;" value="${inputSearch }">

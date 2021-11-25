@@ -57,9 +57,9 @@ public class EmployeeService {
 		List<Employee> listOfEmployees = new ArrayList<Employee>();
 		try {
 			Employee employee = new Employee();
-			employee.setRole(true);
+			employee.setRole(false);
 			
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeName().toLowerCase().contains(name.toLowerCase())) {
 					listOfEmployees.add(emp);
@@ -75,9 +75,9 @@ public class EmployeeService {
 	public List<Employee> searchEmployeeByDateOfBirth(String dateOfBirth){
 		try {
 			Employee employee = new Employee();
-			employee.setRole(true);
+			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeBirthdate().contains(dateOfBirth)) {
 					listOfEmployees.add(emp);
@@ -93,9 +93,9 @@ public class EmployeeService {
 	public List<Employee> searchEmployeeByAddress(String address){
 		try {
 			Employee employee = new Employee();
-			employee.setRole(true);
+			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeAddress().toLowerCase().contains(address.toLowerCase())) {
 					listOfEmployees.add(emp);
@@ -111,9 +111,9 @@ public class EmployeeService {
 	public List<Employee> searchEmployeeByPhoneNumber(String phonenumber){
 		try {
 			Employee employee = new Employee();
-			employee.setRole(true);
+			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeePhone().contains(phonenumber)) {
 					listOfEmployees.add(emp);
@@ -129,9 +129,9 @@ public class EmployeeService {
 	public List<Employee> searchEmployeeByDepartment(int departmentId){
 		try {
 			Employee employee = new Employee();
-			employee.setRole(true);
+			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			
 			for (Employee emp : employees) {
 				if(emp.getDepartmentId() == departmentId) {

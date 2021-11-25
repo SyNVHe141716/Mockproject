@@ -28,9 +28,9 @@
         </div>
 
 	<script>
-		if (window.location.pathname.includes("employee-list.jsp")) {
+		if (window.location.pathname.includes("ListEmployeeController")) {
 			document.getElementById("EmployeeList").classList.add("active");
-		} else if (window.location.pathname.includes("add-employee.jsp")) {
+		} else if (window.location.pathname.includes("AddEmployeeController")) {
 			document.getElementById("AddEmployee").classList.add("active");
 		}
 	</script>

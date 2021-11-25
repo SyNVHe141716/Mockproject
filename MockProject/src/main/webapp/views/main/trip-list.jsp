@@ -14,86 +14,32 @@
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
 </head>
 <body>
-<style type="text/css">
-		.pagination {
-			float: right !important;
-	}
-	</style>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Trip list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" method="POST" action="TripSearchController">
+			<form id="form-search" class="float-right d-flex mr-4 mb-4" method="POST" action="TripListController">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="User Search" class="box-search border-custom p-1 mr-2"
 					style="width: 35%;" value="${inputSearch }">
-				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2 mr-2" id="form-search">Search</div>
-				<select onchange="changeDay()" name="day" id="day"
-					class="border pt-1 pb-2 mr-2" style="width: 10%;">
-					<option value="01">01</option>
-					<option value="02" selected>02</option>
-					<option value="03">03</option>
-					<option value="04">04</option>
-					<option value="05">05</option>
-					<option value="06">06</option>
-					<option value="07">07</option>
-					<option value="08">08</option>
-					<option value="09">09</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-					<option value="23">23</option>
-					<option value="24">24</option>
-					<option value="25">25</option>
-					<option value="26">26</option>
-					<option value="27">27</option>
-					<option value="28">28</option>
-					<option value="29">29</option>
-					<option value="30">30</option>
-					<option value="31">31</option>
-				</select> 
-				<select onchange="changeMonth()" name="month" id="month"
-					class="border pt-1 pb-2 mr-2" style="width: 10%;">
-					<option value="01">01</option>
-					<option value="02" selected>02</option>
-					<option value="03">03</option>
-					<option value="04">04</option>
-					<option value="05">05</option>
-					<option value="06">06</option>
-					<option value="07">07</option>
-					<option value="08">08</option>
-					<option value="09">09</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-				</select> 
-				<select onchange="changeYear()" name="year" id="year"
-					class="border pt-1 pb-2 mr-2" style="width: 10%;">
-					<option value="2015">2015</option>
-					<option value="2016">2016</option>
-					<option value="2017">2017</option>
-					<option value="2018" selected>2018</option>
-					<option value="2019">2019</option>
-					<option value="2020">2020</option>
-					<option value="2021">2021</option>
-					<option value="2022">2022</option>
+				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2" id="form-search">Search</div>
+				<select id="day" name="day" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
+				</select> <select id="month" onchange="selectDate()" name="month"
+					class="border pt-1 pb-2 ml-2 mr-2 pr-5">
+					<c:forEach begin="1" end="12" step="1" var="m">
+						<option value="${m }" <c:if test="${m eq month}">selected</c:if>>${m }</option>
+					</c:forEach>
+				</select> <select id="year" onchange="selectDate()" name="year"
+					class="border pt-1 pb-2 ml-2 mr-2 pr-5">
+					<c:forEach begin="1999" end="${maxYear }" var="y">
+						<option value="${y }" <c:if test="${y eq year}">selected</c:if>>${y }</option>
+					</c:forEach>
 				</select>
 			</form>
-			<div style="width: 95%;">
-			<table class="table table-striped ml-4 table-bordered dt-responsive nowrap table-hover"id="tblTrip">
+			<table class="table table-striped ml-4" style="width: 95%;" id="tblTrip">
 				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 					<tr>
 						<td scope="col">No</td>
@@ -122,7 +68,6 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			</div>
 			<!-- <div class="d-flex ml-4">
 				<a href="#"
 					class="p-2 border text-center rounded-left text-black-50"
@@ -138,16 +83,45 @@
 	<script>
 		$(document).ready(function() {
 			$('#tblTrip').DataTable({
-				bPaginate : true,
-				bLengthChange : false,
-				bFilter : false,
-				bInfo : false,
-				bAutoWidth : false
+				searching : false,
 			});
 		});
 	</script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	
 	<script src="resources/js/search-trip.js"></script>
+	<script>
+	var test = ${day};
+	if(test != 0){
+		var month = document.getElementById('month').value;
+		var year = document.getElementById('year').value;
+		var max = 30;
+		var day = document.getElementById('day');
+		if ((month < 8 && month % 2 != 0) || (month >= 8 && month % 2 == 0)) {
+			max = 31;
+		}
+		else if (month == 2) {
+			if ((year % 4 == 0 && year % 100 != 0) || (year % 4 == 0 && year % 100 == 0 && year % 400 == 0)) {
+				max = 29;
+			}
+			else {
+				max = 28;
+			}
+		}
+		for (var i = 1; i <= max; i++) {
+			var opt = document.createElement('option');
+			opt.value = i;
+			opt.innerHTML = i;
+			if(opt.value == ${day}){
+				opt.selected = 'selected';
+			}
+			day.appendChild(opt);
+		}
+	}
+	else{
+		selectDate();
+	}
+	</script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

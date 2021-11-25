@@ -1,4 +1,4 @@
-package controller;
+package controller.parkingLot;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,6 +14,7 @@ import dao.ParkingLotDAO;
 import dao.ParkingPlaceDAO;
 import dao.impl.ParkingLotDAOImpl;
 import dao.impl.ParkingPlaceDAOImpl;
+import entities.Employee;
 import entities.ParkingLot;
 import entities.ParkingPlace;
 
@@ -49,6 +50,8 @@ public class ParkingLotSearchController extends HttpServlet {
 			request.setAttribute("mess", mess);
 		}
 		boolean activeParkingLotList = true;
+		Employee employee = (Employee) request.getSession().getAttribute("employee") ;
+		request.setAttribute("acc", employee);
 		request.setAttribute("activeParkingLotList", activeParkingLotList);
 		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
@@ -71,12 +74,14 @@ public class ParkingLotSearchController extends HttpServlet {
 				else {
 					parkingLotSearch = parkingLotDAO.searchByName(txtSearch);
 					request.setAttribute("txtSearch", txtSearch);
+					if (parkingLotSearch == null) mess = "No matches";
 				}
 			} else if (category.equalsIgnoreCase("area")) {
 				if (!(request.getParameter("from") == "") && !(request.getParameter("to") == "")) {
 					int minArea = Integer.parseInt(request.getParameter("from"));
 					int maxArea = Integer.parseInt(request.getParameter("to"));
 					parkingLotSearch = parkingLotDAO.searchByArea(minArea, maxArea);
+					if (parkingLotSearch == null) mess = "No matches";
 					request.setAttribute("from", minArea);
 					request.setAttribute("to", maxArea);
 				} else
@@ -88,14 +93,15 @@ public class ParkingLotSearchController extends HttpServlet {
 					parkingLotSearch = parkingLotDAO.searchByPrice(minPrice, maxPrice);
 					request.setAttribute("from", minPrice);
 					request.setAttribute("to", maxPrice);
+					if (parkingLotSearch == null) mess = "No matches";
 				} else
 					mess = "Please fill all field to search";
 			} else if (category.equalsIgnoreCase("place")) {
 				int placeId = Integer.parseInt(request.getParameter("select-place"));
 				parkingLotSearch = parkingLotDAO.searchByPlace(placeId);
 				request.setAttribute("placeId", placeId);
+				if (parkingLotSearch == null) mess = "No matches";
 			}
-			if (parkingLotSearch.isEmpty()) mess = "No matches";
 			request.setAttribute("category", category);
 			request.setAttribute("mess", mess);
 			request.setAttribute("parkingLots", parkingLotSearch);
@@ -109,6 +115,8 @@ public class ParkingLotSearchController extends HttpServlet {
 			mess = "Database connection error";
 			request.setAttribute("mess", mess);
 		}
+		Employee employee = (Employee) request.getSession().getAttribute("employee") ;
+		request.setAttribute("acc", employee);
 		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 
