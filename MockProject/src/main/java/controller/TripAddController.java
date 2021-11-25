@@ -36,7 +36,7 @@ public class TripAddController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			response.sendRedirect("views/main/add-trip.jsp");
+			request.getRequestDispatcher("views/main/add-trip.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

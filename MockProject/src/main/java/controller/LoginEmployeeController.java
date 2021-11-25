@@ -55,7 +55,7 @@ public class LoginEmployeeController extends HttpServlet {
 			if (emp.getAccount() != null && emp.getPassword() != null) {
 
 				request.getSession().setAttribute("employee", emp);
-				if (emp.getRole() == true) {
+				if (emp.getRole() == false) {
 					response.sendRedirect("ListEmployeeController");
 				} else {
 					response.sendRedirect("parking-lot-list");
