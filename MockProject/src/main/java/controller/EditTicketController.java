@@ -21,19 +21,21 @@ import entities.Trip;
 @WebServlet("/EditTicketController")
 public class EditTicketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditTicketController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public EditTicketController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			String ticketId = request.getParameter("id");
 			String edit = request.getParameter("edit");
@@ -49,13 +51,15 @@ public class EditTicketController extends HttpServlet {
 		} catch (Exception e) {
 			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			TicketDAO ticketDAO = new TicketDAOImpl();
 			int ticketId = Integer.parseInt(request.getParameter("ticketId"));
@@ -63,14 +67,9 @@ public class EditTicketController extends HttpServlet {
 			String bookingTime = request.getParameter("bookingTime");
 			int trip = Integer.parseInt(request.getParameter("tripId"));
 			String licensePlate = request.getParameter("licensePlate");
-			
-			if(ticketDAO.updateBookedNumberDown(ticketId)) {
-				if(ticketDAO.editTicket(ticketId, customerName, bookingTime, trip, licensePlate)) {
-					ticketDAO.updateBookedNumberUp(ticketId);
-				}
-			}
-			
+			ticketDAO.editTicket(ticketId, customerName, bookingTime, trip, licensePlate);
 			response.sendRedirect("EditTicketController?id=" + ticketId + "&edit=true");
+
 		} catch (Exception e) {
 			request.getRequestDispatcher("views/main/ErrorPage.jsp").forward(request, response);
 		}

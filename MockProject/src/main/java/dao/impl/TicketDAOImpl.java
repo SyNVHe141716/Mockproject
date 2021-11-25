@@ -102,27 +102,6 @@ public class TicketDAOImpl implements TicketDAO {
 	}
 
 	@Override
-	public boolean updateBookedNumber(int tripId) throws Exception {
-		try {
-			con = DBConnection.getInstance().getConnection();
-			pre = con.prepareStatement(SQLCommand.UPDATE_BOOKED_NUMBER);
-			pre.setInt(1, tripId);
-			return pre.executeUpdate() > 0;
-		} finally {
-			if (rs != null) {
-				rs.close();
-			}
-
-			if (pre != null) {
-				pre.close();
-			}
-			if (con != null) {
-				con.close();
-			}
-		}
-	}
-
-	@Override
 	public List<Ticket> getTicket(String category, String customerName, String from, String to, String tripId,
 			String licensePlate, String bookingDate) throws Exception {
 		List<Ticket> listTicket = new ArrayList<>();
@@ -144,7 +123,7 @@ public class TicketDAOImpl implements TicketDAO {
 			} else if (bookingDate != null && !"".equals(bookingDate)) {
 				where = "where ticket.bookingDate = '" + bookingDate + "'";
 			} else {
-				where = "where ticket.bookingDate = (select max(bookingDate) from ticket)";
+				where = "order by ticket.bookingDate asc";
 			}
 			sql += where;
 			con = DBConnection.getInstance().getConnection();
@@ -370,48 +349,6 @@ public class TicketDAOImpl implements TicketDAO {
 				listCar.add(c);
 			}
 			return listCar;
-		} finally {
-			if (rs != null) {
-				rs.close();
-			}
-			if (pre != null) {
-				pre.close();
-			}
-			if (con != null) {
-				con.close();
-			}
-		}
-	}
-
-	@Override
-	public boolean updateBookedNumberDown(int ticketId) throws Exception {
-		String sql = "update trip set bookedTicketNumber = bookedTicketNumber - 1 where tripId = (select tripId from ticket where ticketId = ?)";
-		try {
-			con = DBConnection.getInstance().getConnection();
-			pre = con.prepareStatement(sql);
-			pre.setInt(1, ticketId);
-			return pre.executeUpdate() > 0;
-		} finally {
-			if (rs != null) {
-				rs.close();
-			}
-			if (pre != null) {
-				pre.close();
-			}
-			if (con != null) {
-				con.close();
-			}
-		}
-	}
-
-	@Override
-	public boolean updateBookedNumberUp(int ticketId) throws Exception {
-		String sql = "update trip set bookedTicketNumber = bookedTicketNumber + 1 where tripId = (select tripId from ticket where ticketId = ?)";
-		try {
-			con = DBConnection.getInstance().getConnection();
-			pre = con.prepareStatement(sql);
-			pre.setInt(1, ticketId);
-			return pre.executeUpdate() > 0;
 		} finally {
 			if (rs != null) {
 				rs.close();

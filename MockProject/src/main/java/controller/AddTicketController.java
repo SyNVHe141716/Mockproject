@@ -62,7 +62,6 @@ public class AddTicketController extends HttpServlet {
 			String licensePlate = request.getParameter("license-plate");
 			TicketDAO ticketDAO = new TicketDAOImpl();
 			if(ticketDAO.addTicket(customerName, bookingTime, tripId, licensePlate)) {
-				ticketDAO.updateBookedNumber(tripId);
 				response.sendRedirect("AddTicketController?add=true");
 			}
 		} catch (Exception e) {

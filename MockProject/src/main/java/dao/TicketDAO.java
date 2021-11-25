@@ -34,10 +34,4 @@ public interface TicketDAO {
 	List<Trip> getTripForUpdate(int ticketId) throws Exception;
 	
 	List<Car> getCarForUpdate(int ticketId) throws Exception;
-	
-	boolean updateBookedNumber(int tripId)  throws Exception;
-	
-	boolean updateBookedNumberDown(int ticketId)  throws Exception;
-	
-	boolean updateBookedNumberUp(int ticketId)  throws Exception;
 }
