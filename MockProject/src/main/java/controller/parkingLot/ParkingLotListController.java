@@ -1,6 +1,7 @@
-package controller;
+package controller.parkingLot;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,20 +11,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ParkingLotDAO;
+import dao.ParkingPlaceDAO;
 import dao.impl.ParkingLotDAOImpl;
+import dao.impl.ParkingPlaceDAOImpl;
+import entities.Employee;
 import entities.ParkingLot;
+import entities.ParkingPlace;
 
 /**
- * Servlet implementation class ParkingLotDeleteControlller
+ * Servlet implementation class ParkingLotListController
  */
-@WebServlet("/parking-lot-delete")
-public class ParkingLotDeleteControlller extends HttpServlet {
+@WebServlet("/parking-lot-list")
+public class ParkingLotListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ParkingLotDeleteControlller() {
+	public ParkingLotListController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,29 +40,22 @@ public class ParkingLotDeleteControlller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String mess = "";
 		try {
-			int id = Integer.parseInt(request.getParameter("id"));
 			ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
-			if (parkingLotDAO.delete(id)) {
-				mess = "Delete successfully!";
-			} else {
-				mess = "Not exist id = " + id + "!";
-			}
-			String pageIndex = request.getParameter("index");
-			if (pageIndex == null) {
-				pageIndex = "1";
-			}
+			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
+			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
 			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
+			Employee employee = (Employee) request.getSession().getAttribute("employee") ;
+			request.setAttribute("acc", employee);
+			request.setAttribute("parkingPlaces", parkingPlaces);
 			request.setAttribute("parkingLots", parkingLots);
 			boolean activeParkingLotList = true;
 			request.setAttribute("activeParkingLotList", activeParkingLotList);
-		} catch (Exception e) {
-			mess = "Delete fail in SQL!";
+			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
+		} catch (SQLException e) {
 			e.printStackTrace();
+			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 		}
-		request.setAttribute("mess", mess);
-		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 
 	/**
@@ -66,8 +64,7 @@ public class ParkingLotDeleteControlller extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 
 }

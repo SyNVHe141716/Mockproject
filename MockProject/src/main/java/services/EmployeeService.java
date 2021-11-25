@@ -59,7 +59,7 @@ public class EmployeeService {
 			Employee employee = new Employee();
 			employee.setRole(false);
 			
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeName().toLowerCase().contains(name.toLowerCase())) {
 					listOfEmployees.add(emp);
@@ -77,7 +77,7 @@ public class EmployeeService {
 			Employee employee = new Employee();
 			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeBirthdate().contains(dateOfBirth)) {
 					listOfEmployees.add(emp);
@@ -95,7 +95,7 @@ public class EmployeeService {
 			Employee employee = new Employee();
 			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeeAddress().toLowerCase().contains(address.toLowerCase())) {
 					listOfEmployees.add(emp);
@@ -113,7 +113,7 @@ public class EmployeeService {
 			Employee employee = new Employee();
 			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			for (Employee emp : employees) {
 				if(emp.getEmployeePhone().contains(phonenumber)) {
 					listOfEmployees.add(emp);
@@ -131,7 +131,7 @@ public class EmployeeService {
 			Employee employee = new Employee();
 			employee.setRole(false);
 			List<Employee> listOfEmployees = new ArrayList<Employee>();
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			
 			for (Employee emp : employees) {
 				if(emp.getDepartmentId() == departmentId) {

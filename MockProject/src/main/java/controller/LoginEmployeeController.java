@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.impl.EmployeeDAOImpl;
 import entities.Employee;
+import utils.AppUtils;
 
 /**
  * Servlet implementation class LoginEmployeeController
@@ -40,7 +41,6 @@ public class LoginEmployeeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			String account = request.getParameter("username");
 			String password = request.getParameter("password");
@@ -53,15 +53,26 @@ public class LoginEmployeeController extends HttpServlet {
 			Employee emp = employeeDAOImpl.getEmployee(employee);
 
 			if (emp.getAccount() != null && emp.getPassword() != null) {
-
-				request.getSession().setAttribute("employee", emp);
-				if (emp.getRole() == false) {
-					response.sendRedirect("ListEmployeeController");
-				} else {
-					response.sendRedirect("parking-lot-list");
+				AppUtils.storeLoginedUser(request.getSession(), emp);
+				//
+				int redirectId = -1;
+				try {
+					redirectId = Integer.parseInt(request.getParameter("redirectId"));
+				} catch (Exception e) {
 				}
-			} else {
+				String requestUri = AppUtils.getRedirectAfterLoginUrl(request.getSession(), redirectId);
+				if (requestUri != null) {
+					response.sendRedirect(requestUri);
+				} else {
+					// Mặc định sau khi đăng nhập thành công
+					if (emp.getRole() == true) {
+						response.sendRedirect("ListEmployeeController");
+					} else {
+						response.sendRedirect("parking-lot-list");
+					}
+				}
 
+			} else {
 				request.setAttribute("acc", account);
 				request.getRequestDispatcher("views/main/login.jsp").forward(request, response);
 			}

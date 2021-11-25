@@ -40,7 +40,7 @@ public class ListEmployeeController extends HttpServlet {
 		try {
 			Employee emp = (Employee) request.getSession().getAttribute("employee");
 			Employee employee = (Employee) request.getSession().getAttribute("employee");
-			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(employee);
+			List<Employee> employees = employeeDAOImpl.getAllEmployeeDepartmentByRole(false);
 			List<Department> departments = departmentDAOImpl.getAllDepartment();
 
 			request.setAttribute("departments", departments);
