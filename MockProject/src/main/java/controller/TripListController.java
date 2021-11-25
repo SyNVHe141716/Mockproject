@@ -36,6 +36,17 @@ public class TripListController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			List<Trip> trips = tripDAOImpl.getAllTrips();
+			
+			if (trips.size() > 0) {
+				request.setAttribute("day", trips.get(0).getDeparttureDate().getDate());
+				request.setAttribute("month", trips.get(0).getDeparttureDate().getMonth() + 1);
+				request.setAttribute("year", trips.get(0).getDeparttureDate().getYear() + 1900);
+				request.setAttribute("maxYear", trips.get(0).getDeparttureDate().getYear() + 1900);
+			}
+			else {
+				request.setAttribute("day", 0);
+				request.setAttribute("maxYear", 2021);
+			}
 
 			request.setAttribute("trips", trips);
 			request.getRequestDispatcher("views/main/trip-list.jsp" + "").forward(request, response);
