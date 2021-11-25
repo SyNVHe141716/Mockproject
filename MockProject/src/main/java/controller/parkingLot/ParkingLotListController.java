@@ -2,6 +2,7 @@ package controller.parkingLot;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.ParkingLotDAO;
 import dao.ParkingPlaceDAO;
+import dao.impl.CarDAOImpl;
 import dao.impl.ParkingLotDAOImpl;
 import dao.impl.ParkingPlaceDAOImpl;
-import entities.Employee;
+import entities.Car;
 import entities.ParkingLot;
 import entities.ParkingPlace;
 
@@ -39,23 +41,37 @@ public class ParkingLotListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		try {
-			ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
-			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
-			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
-			List<ParkingLot> parkingLots = parkingLotDAO.getAll();
-			Employee employee = (Employee) request.getSession().getAttribute("employee") ;
-			request.setAttribute("acc", employee);
-			request.setAttribute("parkingPlaces", parkingPlaces);
-			request.setAttribute("parkingLots", parkingLots);
-			boolean activeParkingLotList = true;
-			request.setAttribute("activeParkingLotList", activeParkingLotList);
-			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
+		String pid = request.getParameter("packId");
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		CarDAOImpl a = new CarDAOImpl();
+		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
+		ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
+		if (pid == null) {
+			try {
+				parkingLots = parkingLotDAO.getAll();
+				List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
+				request.setAttribute("parkingPlaces", parkingPlaces);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
+			}
+		} else {
+			try {
+				int id = Integer.parseInt(pid);
+				ParkingLot p = parkingLotDAO.getById(id);
+				parkingLots.add(p);
+				List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
+				request.setAttribute("parkingPlaces", parkingPlaces);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
+			}
 		}
+		request.setAttribute("parkingLots", parkingLots);
+
+		boolean activeParkingLotList = true;
+		request.setAttribute("activeParkingLotList", activeParkingLotList);
+		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 
 	/**
@@ -64,6 +80,8 @@ public class ParkingLotListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//		boolean activeParkingLotList = true;
+//		request.setAttribute("activeParkingLotList", activeParkingLotList);
 		request.getRequestDispatcher("views/main/parking-lot-list.jsp").forward(request, response);
 	}
 

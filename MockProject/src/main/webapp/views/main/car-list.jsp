@@ -78,7 +78,7 @@
 								<td>${c.carType}</td>
 								<td>${c.carColor}</td>
 								<td>${c.company.companyName}</td>
-								<td><a href="#">${c.parkingLot.name}</a></td>
+								<td><a href="parking-lot-list?packId=${c.parkingLot.id}">${c.parkingLot.name}</a></td>
 								<td><a href="UpdateCarController?uid=${c.licensePlate}"><i
 										class="far fa-edit"></i>Edit</a> <a
 									onclick="if (!(confirm('Are you sure to delete'))) return false"

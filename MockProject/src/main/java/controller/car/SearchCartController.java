@@ -1,4 +1,4 @@
-package controller;
+package controller.car;
 
 import java.io.IOException;
 import java.sql.SQLException;
