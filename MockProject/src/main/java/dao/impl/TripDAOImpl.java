@@ -200,4 +200,28 @@ public class TripDAOImpl implements TripDAO{
 		return status;
 	}
 
+	@Override
+	public int getMaxYear() throws Exception {
+		try {
+			String sql = "select year(max(departtureDate)) as maxYear from trip";
+			con = DBConnection.getInstance().getConnection();
+			pre = con.prepareStatement(sql);
+			rs = pre.executeQuery();
+			if (rs.next()) {
+				return rs.getInt("maxYear");
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pre != null) {
+				pre.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return 0;
+	}
+
 }
