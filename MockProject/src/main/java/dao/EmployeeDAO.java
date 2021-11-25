@@ -22,7 +22,7 @@ public interface EmployeeDAO {
 	
 	public List<Employee> getAllEmployeesByRole(Employee employee) throws SQLException;
 	
-	public List<Employee> getAllEmployeeDepartmentByRole(Employee employee) throws SQLException;
+	public List<Employee> getAllEmployeeDepartmentByRole(boolean role) throws SQLException;
 
 	public List<Employee> getAllEmployeesById(int id) throws SQLException;
 

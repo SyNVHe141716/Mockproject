@@ -296,14 +296,14 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 
 	@Override
-	public List<Employee> getAllEmployeeDepartmentByRole(Employee emp) throws SQLException {
+	public List<Employee> getAllEmployeeDepartmentByRole(boolean role) throws SQLException {
 		List<Employee> employees = new ArrayList<Employee>();
 		Employee employee = null;
 		Department department = null;
 		try {
 			con = DBConnection.getInstance().getConnection();
 			pre = con.prepareStatement(SQLCommand.GET_ALL_EMPLOYEES_DEPARTMENT_BY_ROLE);
-			pre.setBoolean(1, emp.getRole());
+			pre.setBoolean(1, role);
 			rs = pre.executeQuery();
 			while(rs.next()) {
 				employee = new Employee();

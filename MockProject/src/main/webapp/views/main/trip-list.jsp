@@ -28,8 +28,7 @@
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Trip list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="d-flex mr-4 mb-4 justify-content-end"
-				method="POST" action="TripSearchController">
+			<form id="form-search" class="d-flex mr-lg-5 mb-4 justify-content-end" method="POST" action="TripListController">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="User Search" class="box-search border-custom p-1 mr-2"
@@ -93,6 +92,8 @@
 			});
 		});
 	</script>
+	
+	<script src="resources/js/search-trip.js"></script>
 	<script>
 	var test = ${day};
 	if(test != 0){
@@ -126,7 +127,6 @@
 	}
 	</script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/js/search-trip.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>

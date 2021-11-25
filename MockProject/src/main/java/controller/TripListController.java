@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.TripDAO;
 import dao.impl.TripDAOImpl;
 import entities.Trip;
 
@@ -18,7 +20,7 @@ import entities.Trip;
 @WebServlet("/TripListController")
 public class TripListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	TripDAOImpl tripDAOImpl = new TripDAOImpl();
+	TripDAO tripDAOImpl = new TripDAOImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -61,7 +63,26 @@ public class TripListController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		try {
+			String day = request.getParameter("day");
+			String month = request.getParameter("month");
+			String year = request.getParameter("year");
+			String inputSearch = request.getParameter("input-search");
+			
+			String date = year+"-"+month+"-"+day;
+			int maxYear = tripDAOImpl.getMaxYear();
+			
+			List<Trip> trips = tripDAOImpl.getAllTripsByDateAndDes(Date.valueOf(date), inputSearch);
+			request.setAttribute("trips", trips);
+			request.setAttribute("inputSearch", inputSearch);
+			request.setAttribute("day", day);
+			request.setAttribute("month", month);
+			request.setAttribute("year", year);
+			request.setAttribute("maxYear", maxYear);
+			request.getRequestDispatcher("views/main/trip-list.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

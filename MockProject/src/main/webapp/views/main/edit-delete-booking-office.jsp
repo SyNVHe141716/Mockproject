@@ -19,7 +19,7 @@
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 
-		<form action="<%=request.getContextPath() %>/update" method="post"
+		<form action="<%=request.getContextPath() %>/UpdateBookingController" method="post"
 			class="float-left main-content border-top"
 			id="form-edit-delete-booking-office">
 			<h2 class="m-4">Edit Booking Office</h2>

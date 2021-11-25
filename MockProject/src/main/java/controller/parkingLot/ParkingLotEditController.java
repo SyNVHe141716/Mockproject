@@ -1,7 +1,6 @@
-package controller;
+package controller.parkingLot;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,20 +13,21 @@ import dao.ParkingLotDAO;
 import dao.ParkingPlaceDAO;
 import dao.impl.ParkingLotDAOImpl;
 import dao.impl.ParkingPlaceDAOImpl;
+import entities.Employee;
 import entities.ParkingLot;
 import entities.ParkingPlace;
 
 /**
- * Servlet implementation class ParkingLotAddController
+ * Servlet implementation class ParkingLotEditController
  */
-@WebServlet("/add-parking-lot")
-public class ParkingLotAddController extends HttpServlet {
+@WebServlet("/parking-lot-edit")
+public class ParkingLotEditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ParkingLotAddController() {
+	public ParkingLotEditController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,19 +38,23 @@ public class ParkingLotAddController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 		String mess = "";
 		try {
+			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
 			request.setAttribute("parkingPlaces", parkingPlaces);
-		} catch (SQLException e) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
+			ParkingLot parkingLot = parkingLotDAO.getById(id);
+			request.setAttribute("parkingLot", parkingLot);
+		} catch (Exception e) {
 			e.printStackTrace();
-			mess = "Fail on SQL when get parking places";
+			mess = "Fail in SQL on get Parking lot";
 			request.setAttribute("mess", mess);
 		}
-		boolean activeParkingLotAdd = true;
-		request.setAttribute("activeParkingLotAdd", activeParkingLotAdd);
-		request.getRequestDispatcher("views/main/add-parking-lot.jsp").forward(request, response);
+		Employee employee = (Employee) request.getSession().getAttribute("employee") ;
+		request.setAttribute("acc", employee);
+		request.getRequestDispatcher("views/main/edit-parking-lot.jsp").forward(request, response);
 	}
 
 	/**
@@ -59,37 +63,38 @@ public class ParkingLotAddController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		int placeId = Integer.parseInt(request.getParameter("placeId"));
 		int area = Integer.parseInt(request.getParameter("area"));
 		int price = Integer.parseInt(request.getParameter("price"));
-		ParkingLot parkingLot = new ParkingLot(name, placeId, area, price, false);
+		boolean status = false;
+		ParkingLot parkingLotUpdate = new ParkingLot(id, name, placeId, area, price, status);
 		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
-		ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
 		String mess = "";
-
 		try {
-			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
-			request.setAttribute("parkingPlaces", parkingPlaces);
+			if (parkingLotDAO.getByName(name) == null || parkingLotDAO.getByName(name).getId() == id) {
+			if (parkingLotDAO.update(parkingLotUpdate)) {
+				mess = "Update Sucessfully!";
 
-			if (parkingLotDAO.getByName(name.toLowerCase()) == null) {
-				if (parkingLotDAO.add(parkingLot)) {
-					mess = "Add Parking Lot Successfully!";
-
-				} else {
-					mess = "Add Parking Lot Fail!";
-				}
 			} else {
+				mess = "Update Fail!";
+			}
+			}
+			else {
 				mess = "Parking Slot name \"" + name + "\" was existed!";
 			}
-			boolean activeParkingLotAdd = true;
-			request.setAttribute("activeParkingLotAdd", activeParkingLotAdd);
+			ParkingPlaceDAO parkingPlaceDAO = new ParkingPlaceDAOImpl();
+			List<ParkingPlace> parkingPlaces = parkingPlaceDAO.getAll();
+			request.setAttribute("parkingPlaces", parkingPlaces);
+			ParkingLot parkingLot = parkingLotDAO.getById(id);
+			request.setAttribute("parkingLot", parkingLot);
 		} catch (Exception e) {
-			mess = "Add Parking Lot Fail in SQL!";
+			mess = "Fail in SQL";
 			e.printStackTrace();
 		}
 		request.setAttribute("mess", mess);
-		request.getRequestDispatcher("views/main/add-parking-lot.jsp").forward(request, response);
+		request.getRequestDispatcher("views/main/edit-parking-lot.jsp").forward(request, response);
 	}
 
 }
