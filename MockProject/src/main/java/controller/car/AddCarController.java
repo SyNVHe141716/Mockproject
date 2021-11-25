@@ -65,7 +65,10 @@ public class AddCarController extends HttpServlet {
 			if (dao.searchByLicensePlate(licensePlate) == null) {
 				if (dao.addCar(car) == 1) {
 					err = "Add successfully!";
-
+//					response.getWriter().write("<script type=\"text/javascript\">");
+//					response.getWriter().write("alert('Add Car Sucessfully');");
+//					response.getWriter().write("location='ListCarController';");
+//					response.getWriter().write("</script>");
 				} else {
 					err = "Add  fail!";
 				}

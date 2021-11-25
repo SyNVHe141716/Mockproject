@@ -35,6 +35,11 @@ public class SecurityConfig {
 		urlPatterns1.add("/TicketListController");
 		urlPatterns1.add("/TripAddController");
 		urlPatterns1.add("/TripListController");
+		urlPatterns1.add("/ListCarController");
+		urlPatterns1.add("/AddCarController");
+		urlPatterns1.add("/UpdateCarController");
+		urlPatterns1.add("/SearchCarController");
+		urlPatterns1.add("/DeleteController");
 
 		mapConfig.put(ROLE_EMPLOYEE, urlPatterns1);
 
