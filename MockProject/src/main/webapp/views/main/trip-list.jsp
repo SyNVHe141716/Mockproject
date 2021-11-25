@@ -7,25 +7,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Trip List</title>
-<link rel="stylesheet"
-	href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
+<style type="text/css">
+		.pagination {
+			float: right !important;
+	}
+	</style>
 	<jsp:include page="../header/header.jsp"></jsp:include>
 	<div>
 		<jsp:include page="../sidebar/sidebar-service-manager.jsp"></jsp:include>
 		<div class="float-left main-content border-top">
 			<h2 class="m-4">Trip list</h2>
 			<hr class="m-4">
-			<form id="form-search" class="float-right d-flex mr-4 mb-4" method="POST" action="TripSearchController">
+			<form id="form-search" class="d-flex mr-4 mb-4 justify-content-end"
+				method="POST" action="TripSearchController">
 				<i class="fas fa-search p-2 bg-custom border border-icon-search"></i>
 				<input id="input-search" name="input-search" type="text"
 					placeholder="User Search" class="box-search border-custom p-1 mr-2"
 					style="width: 35%;" value="${inputSearch }">
-				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2" id="form-search">Search</div>
+				<div onclick="searchTrip()" class="btn btn-info p-1 pl-2 pr-2"
+					id="form-search">Search</div>
 				<select id="day" name="day" class="border pt-1 pb-2 ml-2 mr-2 pr-5">
 				</select> <select id="month" onchange="selectDate()" name="month"
 					class="border pt-1 pb-2 ml-2 mr-2 pr-5">
@@ -39,51 +49,47 @@
 					</c:forEach>
 				</select>
 			</form>
-			<table class="table table-striped ml-4" style="width: 95%;" id="tblTrip">
-				<thead class="font-weight-bold" style="background-color: #e7e7e7;">
-					<tr>
-						<td scope="col">No</td>
-						<td scope="col">Destination</td>
-						<td scope="col">Departure time</td>
-						<td scope="col">Driver</td>
-						<td scope="col">Car type</td>
-						<td scope="col">Booked ticket number</td>
-						<td scope="col">Action</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${trips }" var="trip">
+			<div style="width: 95%;">
+				<table class="table table-striped ml-4" id="tblTrip">
+					<thead class="font-weight-bold" style="background-color: #e7e7e7;">
 						<tr>
-						<td scope="col">${trip.tripId }</td>
-						<td>${trip.destination }</td>
-						<td>${trip.departureTime }</td>
-						<td>${trip.driver }</td>
-						<td>${trip.carType }</td>
-						<td>${trip.bookedTicketNumber }</td>
-						<td>
-							<a href="TripUpdateController?id=${trip.tripId }"><i class="far fa-edit"></i>Edit</a>
-							<a href="TripDeleteController?id=${trip.tripId }"><i class="far fa-trash-alt"></i>Delete</a>
-						</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<!-- <div class="d-flex ml-4">
-				<a href="#"
-					class="p-2 border text-center rounded-left text-black-50"
-					style="width: 6.5%; border-right: 0;">Previous</a> <a href="#"
-					class="p-2 border pl-3 pr-3 now-index">1</a> <a href="#"
-					class="p-2 border pl-3 pr-3 now-index">2</a> <a href="#"
-					class="p-2 border pl-3 pr-3 now-index">3</a> <a href="#"
-					class="p-2 border text-center rounded-right text-black-50"
-					style="width: 6.5%; border-left: 0;">Next</a>
-			</div> -->
+							<td scope="col">No</td>
+							<td scope="col">Destination</td>
+							<td scope="col">Departure time</td>
+							<td scope="col">Driver</td>
+							<td scope="col">Car type</td>
+							<td scope="col">Booked ticket number</td>
+							<td scope="col">Action</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${trips }" var="trip">
+							<tr>
+								<td scope="col">${trip.tripId }</td>
+								<td>${trip.destination }</td>
+								<td>${trip.departureTime }</td>
+								<td>${trip.driver }</td>
+								<td>${trip.carType }</td>
+								<td>${trip.bookedTicketNumber }</td>
+								<td><a href="TripUpdateController?id=${trip.tripId }"><i
+										class="far fa-edit"></i>Edit</a> <a
+									href="TripDeleteController?id=${trip.tripId }"><i
+										class="far fa-trash-alt"></i>Delete</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<script>
 		$(document).ready(function() {
 			$('#tblTrip').DataTable({
-				searching : false,
+				bPaginate : true,
+				bLengthChange : false,
+				bFilter : false,
+				bInfo : false,
+				bAutoWidth : false
 			});
 		});
 	</script>
@@ -124,8 +130,9 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="<c:url value='/resources/bootstrap/js/bootstrap.min.js' />"></script>
+
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script
 		src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>

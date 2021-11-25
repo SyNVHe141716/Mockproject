@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/style-main.css">
 <script src="https://kit.fontawesome.com/9f5e8136b5.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 	<style type="text/css">
