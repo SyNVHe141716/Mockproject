@@ -24,6 +24,7 @@ import entities.ParkingPlace;
 @WebServlet("/parking-lot-search")
 public class ParkingLotSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private List<ParkingLot> parkingLotSearch;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -64,7 +65,7 @@ public class ParkingLotSearchController extends HttpServlet {
 			throws ServletException, IOException {
 		String category = request.getParameter("category");
 		ParkingLotDAO parkingLotDAO = new ParkingLotDAOImpl();
-		List<ParkingLot> parkingLotSearch = null;
+		parkingLotSearch = null;
 		String mess = "";
 		try {
 			if (category.equalsIgnoreCase("name")) {

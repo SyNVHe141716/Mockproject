@@ -28,18 +28,23 @@ public class SecurityConfig {
 		urlPatterns1.add("/parking-lot-search");
 		urlPatterns1.add("/parking-lot-delete");
 		urlPatterns1.add("/parking-lot-edit");
-		urlPatterns1.add("/add");
-		urlPatterns1.add("/booking");
-		urlPatterns1.add("/search");
-		urlPatterns1.add("/delete");
 		urlPatterns1.add("/TicketListController");
+		urlPatterns1.add("/EditTicketController");
+		urlPatterns1.add("/DeleteTicketController");
 		urlPatterns1.add("/TripAddController");
 		urlPatterns1.add("/TripListController");
+		urlPatterns1.add("/TripUpdateController");
+		urlPatterns1.add("/TripDeleteController");
 		urlPatterns1.add("/ListCarController");
 		urlPatterns1.add("/AddCarController");
 		urlPatterns1.add("/UpdateCarController");
 		urlPatterns1.add("/SearchCarController");
 		urlPatterns1.add("/DeleteController");
+		urlPatterns1.add("/AddBookingController");
+		urlPatterns1.add("/BookingListController");
+		urlPatterns1.add("/search");
+		urlPatterns1.add("/delete");
+		urlPatterns1.add("/UpdateBookingController");
 
 		mapConfig.put(ROLE_EMPLOYEE, urlPatterns1);
 
@@ -48,6 +53,8 @@ public class SecurityConfig {
 
 		urlPatterns2.add("/ListEmployeeController");
 		urlPatterns2.add("/AddEmployeeController");
+		urlPatterns2.add("/DeleteEmployeeController");
+		urlPatterns2.add("/ViewEmployeeController");
 
 		mapConfig.put(ROLE_MANAGER, urlPatterns2);
 	}
